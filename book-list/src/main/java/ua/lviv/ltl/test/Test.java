@@ -20,34 +20,36 @@ public class Test {
 		
 		List<Author> authors =authorDao.getAll();
 		
+		//com.mysql.jdbc.Driver dr;
+		
 		Author a0=authors.get(0);
 		Set<Book> b0 = a0.getBooks();
-		b0.add(bookDao.getById(17L));
-		b0.add(bookDao.getById(20L));		
+		b0.add(bookDao.getById(1L));
+		b0.add(bookDao.getById(4L));		
 		authorDao.update(a0);
 		
 		Author a1=authors.get(1);
 		Set<Book> b1 = a1.getBooks();
-		b1.add(bookDao.getById(18L));
-		b1.add(bookDao.getById(19L));		
+		b1.add(bookDao.getById(2L));
+		b1.add(bookDao.getById(3L));		
 		authorDao.update(a1);
 		
 		Author a2=authors.get(2);
 		Set<Book> b2 = a2.getBooks();
-		b2.add(bookDao.getById(17L));
-		b2.add(bookDao.getById(19L));		
+		b2.add(bookDao.getById(1L));
+		b2.add(bookDao.getById(3L));		
 		authorDao.update(a2);
 		
 		Author a3=authors.get(3);
 		Set<Book> b3 = a3.getBooks();
-		b3.add(bookDao.getById(18L));
-		b3.add(bookDao.getById(20L));		
+		b3.add(bookDao.getById(2L));
+		b3.add(bookDao.getById(4L));		
 		authorDao.update(a3);
 		
 		Author a4=authors.get(4);
 		Set<Book> b4 = a4.getBooks();
-		b4.add(bookDao.getById(17L));
-		b4.add(bookDao.getById(20L));		
+		b4.add(bookDao.getById(1L));
+		b4.add(bookDao.getById(4L));		
 		authorDao.update(a4);
 		
 		

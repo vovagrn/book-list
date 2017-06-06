@@ -18,13 +18,13 @@
 				<th>isbn</th>
 				<th>AUTHORS</th>
 			</tr>
-			<c:forEach var="book" items="${books}" varStatus="status2">
+			<c:forEach var="book" items="${author.books}" varStatus="status">
 				<tr>
-					<td>${status2.count}</td>
+					<td>${status.count}</td>
 					<td>${book.title}</td>
 					<td>${book.description}</td>
 					<td>${book.isbn}</td>
-					<td><a href="book?id=${book.id}">AUTHORS</a></td>
+					<td><a href="<c:url value="/book/view?id=${book.id}"/>">AUTHORS</a></td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -1,6 +1,6 @@
 package ua.lviv.ltl.dao;
 
-public class DaoException extends Exception{
+public class DaoException extends RuntimeException{
 	
 	private static final long serialVersionUID = 1L;
 
