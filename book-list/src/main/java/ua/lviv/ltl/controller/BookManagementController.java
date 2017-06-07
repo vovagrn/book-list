@@ -1,17 +1,21 @@
 package ua.lviv.ltl.controller;
 
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ua.lviv.ltl.dao.AuthorDao;
 import ua.lviv.ltl.dao.BookDao;
 import ua.lviv.ltl.dao.impl.DaoFactory;
+import ua.lviv.ltl.model.Author;
+import ua.lviv.ltl.model.Book;
 
 @WebServlet("/book/*")
 public class BookManagementController extends BaseManagementController {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -69,4 +73,45 @@ public class BookManagementController extends BaseManagementController {
 			// }
 		}
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		DaoFactory daoFactory = DaoFactory.getInstance();
+		BookDao bookDao = daoFactory.getBookDao();
+
+		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
+		if (resourcePath != null) {
+			switch (resourcePath) {
+			// case add:
+			// Person person = null;
+			// String gender = req.getParameter(Parameter.gender.name());
+			// if (gender.equals("Male")) {
+			// person = new Male();
+			// }
+			// if (gender.equals("Female")) {
+			// person = new Female();
+			// }
+			// person.setFirstName(req.getParameter(Parameter.firstName.name()));
+			// person.setLastName(req.getParameter(Parameter.lastName.name()));
+			// person.setBirthDate(getDate(req.getParameter(Parameter.birthDate.name())));
+			// personManagementService.addPerson(person);
+			// req.setAttribute("persons",
+			// personManagementService.getAllPersons());
+			// forvardRequest(Page.listPerson, req, res);
+			// break;
+			case edit:
+				Book book = bookDao.getById((Long.parseLong(req.getParameter("id"))));
+				book.setTitle(req.getParameter("title"));
+				book.setDescription(req.getParameter("description"));
+				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
+				bookDao.update(book);				
+				req.setAttribute("books", bookDao.getAll());
+				forwardRequest(Page.listBook, req, resp);
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
 }

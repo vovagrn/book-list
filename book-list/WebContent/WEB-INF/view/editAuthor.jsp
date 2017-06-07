@@ -25,8 +25,8 @@
 				<input type="text" name="lastName" value="${author.lastName}">
 				<br><br>
 				
-				<label><fmt:message key="author.form.label.birthDate"/></label>
-				<input type="text" name="birthDate" value="<fmt:formatDate value="${person.birthDate}" pattern="${dateFormat}"/>">
+				<label><fmt:message key="author.form.label.middleName"/></label>
+				<input type="text" name="middleName" value="${author.middleName}">
 				<br><br>
 				
 				<input type="hidden" name="id" value="${author.id}">

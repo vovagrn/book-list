@@ -23,7 +23,7 @@ public abstract class BaseManagementController extends HttpServlet {
 		ResourcePath resourcePath = null;
 		if (pathInfo != null) {
 			try {
-				resourcePath = ResourcePath.valueOf(pathInfo.replaceFirst("/", ""));
+				resourcePath = ResourcePath.valueOf(pathInfo.replaceFirst("/", ""));				
 			} catch (IllegalArgumentException e) {
 			}
 		}
