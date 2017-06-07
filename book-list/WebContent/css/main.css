@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+/* LIST PERSONS */
+#table, .tableCell {border:1px solid #000; border-collapse:collapse;}
+	#table td.centered {text-align:center;}
+	.tableCell {padding:5px;}
+		.tableAction {text-decoration:none;}
+		.tableAction:hover {color:#ff0000;}
