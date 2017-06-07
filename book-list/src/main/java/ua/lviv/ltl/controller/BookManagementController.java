@@ -7,10 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.lviv.ltl.dao.AuthorDao;
 import ua.lviv.ltl.dao.BookDao;
 import ua.lviv.ltl.dao.impl.DaoFactory;
-import ua.lviv.ltl.model.Author;
 import ua.lviv.ltl.model.Book;
 
 @WebServlet("/book/*")
