@@ -6,32 +6,39 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<fmt:setBundle basename="/message/message"/>
+
 <html>
 <head>
+<title><fmt:message key="listBook.title"/></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/css/main.css"/>">
-<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css"	href="<c:url value="/css/main.css"/>">
 </head>
 <body>
-
 	<div id="content">
-		<table id="authorTable">
+		<table id="table">
 			<tr>
-				<th>№</th>
-				<th>Title</th>
-				<th>description</th>
-				<th>isbn</th>
-				<th>AUTHORS</th>
+				<th class="tableCell"><fmt:message key="list.book.table.header.number"/></th>
+				<th class="tableCell"><fmt:message key="list.book.table.header.title"/></th>
+				<th class="tableCell"><fmt:message key="list.book.table.header.description"/></th>
+				<th class="tableCell"><fmt:message key="list.book.table.header.isbn"/></th>
+				<th class="tableCell"><fmt:message key="list.book.table.header.authors"/></th>
+				<th class="tableCell"><fmt:message key="list.book.table.header.actions"/></th>
 			</tr>
 
 			<c:forEach var="book" items="${books}" varStatus="status">
 				<tr>
-					<td>${status.count}</td>
-					<td>${book.title}</td>
-					<td>${book.description}</td>
-					<td>${book.isbn}</td>
-					<td><a href="view?id=${book.id}">AUTHORS</a></td>
+					<td class="tableCell">${status.count}</td>
+					<td class="tableCell">${book.title}</td>
+					<td class="tableCell">${book.description}</td>
+					<td class="tableCell">${book.isbn}</td>
+					<td class="tableCell"><a href="view?id=${book.id}">Authors</a></td>
+					<td class="tableCell">
+						<a class="tableAction" href="edit?id=${book.id}">Edit</a> 
+						<br>
+						<a class="tableAction" href="delete?id=${book.id}">Delete</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
