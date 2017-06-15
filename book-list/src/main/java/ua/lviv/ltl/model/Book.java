@@ -2,12 +2,15 @@ package ua.lviv.ltl.model;
 
 import java.util.List;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -40,7 +43,7 @@ public class Book extends BaseModel {
 	@Column(name = "isbn")
 	private int isbn;
 
-	
+	@Cascade({CascadeType.SAVE_UPDATE})
 	@ManyToMany(mappedBy = "books",fetch=FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
 	private List<Author> authors;

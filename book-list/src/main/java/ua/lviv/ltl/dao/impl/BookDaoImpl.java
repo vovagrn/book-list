@@ -6,6 +6,7 @@ import org.hibernate.Session;
 
 import ua.lviv.ltl.dao.BookDao;
 import ua.lviv.ltl.dao.DaoException;
+import ua.lviv.ltl.model.Author;
 import ua.lviv.ltl.model.Book;
 import ua.lviv.ltl.util.HibernateUtil;
 
@@ -27,10 +28,12 @@ public class BookDaoImpl extends AbstractGenericDao<Book> implements BookDao {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
-			object.getAuthors().clear();
+			for (Author author : object.getAuthors()) {
+				author.getBooks().remove(object);
+				//session.update(author);
+			}
 			session.update(object);
-			System.out.println("<----update---->"+ object.getAuthors());
-			//session.delete(object);
+			session.delete(object);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,7 +42,5 @@ public class BookDaoImpl extends AbstractGenericDao<Book> implements BookDao {
 				session.close();
 		}
 	}
-	
-	
 
 }
