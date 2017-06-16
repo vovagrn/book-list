@@ -30,9 +30,9 @@ public class BookDaoImpl extends AbstractGenericDao<Book> implements BookDao {
 			session.beginTransaction();
 			for (Author author : object.getAuthors()) {
 				author.getBooks().remove(object);
-				//session.update(author);
+				session.update(author);
 			}
-			session.update(object);
+			// session.update(object);
 			session.delete(object);
 			session.getTransaction().commit();
 		} catch (Exception e) {
