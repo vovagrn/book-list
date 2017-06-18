@@ -5,11 +5,11 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -42,9 +42,7 @@ public class Author extends BaseModel {
 	@Column(name = "middle_name")
 	private String middleName;
 
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name = "book_author", joinColumns = { @JoinColumn(name = "author_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "book_id") })
+	@ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
 	private Set<Book> books;
 
@@ -83,14 +81,13 @@ public class Author extends BaseModel {
 	@Override
 	public String toString() {
 		return "Author [firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName + ", books="
-				 + ", getId()=" + getId() + "]";
+				+ ", getId()=" + getId() + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((books == null) ? 0 : books.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((middleName == null) ? 0 : middleName.hashCode());
@@ -106,11 +103,6 @@ public class Author extends BaseModel {
 		if (getClass() != obj.getClass())
 			return false;
 		Author other = (Author) obj;
-		if (books == null) {
-			if (other.books != null)
-				return false;
-		} else if (!books.equals(other.books))
-			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;

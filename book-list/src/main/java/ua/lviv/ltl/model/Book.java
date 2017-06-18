@@ -1,11 +1,13 @@
 package ua.lviv.ltl.model;
 
-import java.util.List;
-
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -27,7 +29,7 @@ public class Book extends BaseModel {
 		this.isbn = isbn;
 	}
 
-	public Book(String title, String description, int isbn, List<Author> authors) {
+	public Book(String title, String description, int isbn, Set<Author> authors) {
 		this.title = title;
 		this.description = description;
 		this.isbn = isbn;
@@ -43,16 +45,18 @@ public class Book extends BaseModel {
 	@Column(name = "isbn")
 	private int isbn;
 
-	@Cascade({CascadeType.SAVE_UPDATE})
-	@ManyToMany(mappedBy = "books",fetch=FetchType.EAGER)
+	// @Cascade({CascadeType.SAVE_UPDATE})
+	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
-	private List<Author> authors;
+	@JoinTable(name = "book_author", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "author_id") })
+	private Set<Author> authors = new LinkedHashSet<>();
 
-	public List<Author> getAuthors() {
+	public Set<Author> getAuthors() {
 		return authors;
 	}
 
-	public void setAuthors(List<Author> authors) {
+	public void setAuthors(Set<Author> authors) {
 		this.authors = authors;
 	}
 
@@ -82,15 +86,14 @@ public class Book extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", description=" + description + ", isbn=" + isbn + ", authors=" 
-				+ ", getId()=" + getId() + "]";
+		return "Book [title=" + title + ", description=" + description + ", isbn=" + isbn + ", authors=" + ", getId()="
+				+ getId() + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((authors == null) ? 0 : authors.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + isbn;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -106,11 +109,6 @@ public class Book extends BaseModel {
 		if (getClass() != obj.getClass())
 			return false;
 		Book other = (Book) obj;
-		if (authors == null) {
-			if (other.authors != null)
-				return false;
-		} else if (!authors.equals(other.authors))
-			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
