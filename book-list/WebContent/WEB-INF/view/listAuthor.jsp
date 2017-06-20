@@ -42,6 +42,9 @@
 				</tr>
 			</c:forEach>
 		</table>
+		
+		<a href="add">Add</a>
+		
 	</div>
 </body>
 </html>

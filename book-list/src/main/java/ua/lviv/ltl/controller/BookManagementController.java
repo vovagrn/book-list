@@ -25,6 +25,16 @@ public class BookManagementController extends BaseManagementController {
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
 		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
+		req.getSession().setAttribute("previousPath", req.getSession().getAttribute("path"));
+		req.getSession().setAttribute("path", req.getSession().getAttribute("lastPath"));
+		req.getSession().setAttribute("lastPath", (req.getRequestURL().append('?').append(req.getQueryString())).toString());
+		System.out.println("<-----------" + req.getSession().getAttribute("previousPath"));
+		System.out.println("<-----------" + req.getSession().getAttribute("path"));
+		System.out.println("<-----------" + req.getSession().getAttribute("lastPath"));
+		
+		
+		
+		
 		System.out.println("<-----------" + resourcePath);
 		if (resourcePath != null) {
 			switch (resourcePath) {
@@ -83,6 +93,15 @@ public class BookManagementController extends BaseManagementController {
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
 		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
+		req.getSession().setAttribute("previousPath", req.getSession().getAttribute("path"));
+		req.getSession().setAttribute("path", req.getSession().getAttribute("lastPath"));
+		req.getSession().setAttribute("lastPath", (req.getRequestURL().append('?').append(req.getQueryString())).toString());
+		System.out.println("<-----------" + req.getSession().getAttribute("previousPath"));
+		System.out.println("<-----------" + req.getSession().getAttribute("path"));
+		System.out.println("<-----------" + req.getSession().getAttribute("lastPath"));
+		
+		
+		
 
 		Book book = null;
 		String[] ids = null;

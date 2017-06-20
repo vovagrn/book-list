@@ -21,7 +21,16 @@ public class AuthorManagementController extends BaseManagementController {
 		DaoFactory daoFactory = DaoFactory.getInstance();
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
-		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
+		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());		
+		req.getSession().setAttribute("previousPath", req.getSession().getAttribute("path"));
+		req.getSession().setAttribute("path", req.getSession().getAttribute("lastPath"));
+		req.getSession().setAttribute("lastPath", (req.getRequestURL().append('?').append(req.getQueryString())).toString());
+		System.out.println("<-----------" + req.getSession().getAttribute("previousPath"));
+		System.out.println("<-----------" + req.getSession().getAttribute("path"));
+		System.out.println("<-----------" + req.getSession().getAttribute("lastPath"));
+		
+		
+		
 		System.out.println("<-----------" + resourcePath);
 		if (resourcePath != null) {
 			switch (resourcePath) {
@@ -50,27 +59,6 @@ public class AuthorManagementController extends BaseManagementController {
 			}
 		}
 
-		// String authorId = req.getParameter("id");
-		// if (authorId == null) {
-		//
-		// List<Author> authors = null;
-		// try {
-		// authors = authorDao.getAll();
-		// } catch (DaoException e) {
-		// e.printStackTrace();
-		// }
-		// req.setAttribute("authors", authors);
-		// forwardRequest(Page.listAuthor, req, resp);
-		// } else {
-		// Author author = null;
-		// try {
-		// author = authorDao.getById(Long.parseLong(authorId));
-		// } catch (NumberFormatException | DaoException e) {
-		// e.printStackTrace();
-		// }
-		// req.setAttribute("author", author);
-		// forwardRequest(Page.author, req, resp);
-		// }
 	}
 
 	@Override
@@ -78,34 +66,38 @@ public class AuthorManagementController extends BaseManagementController {
 		DaoFactory daoFactory = DaoFactory.getInstance();
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
-		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
+		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());		
+		req.getSession().setAttribute("previousPath", req.getSession().getAttribute("path"));
+		req.getSession().setAttribute("path", req.getSession().getAttribute("lastPath"));
+		req.getSession().setAttribute("lastPath", (req.getRequestURL().append('?').append(req.getQueryString())).toString());
+		System.out.println("<-----------" + req.getSession().getAttribute("previousPath"));
+		System.out.println("<-----------" + req.getSession().getAttribute("path"));
+		System.out.println("<-----------" + req.getSession().getAttribute("lastPath"));
+		
+		
+		
+		
 		if (resourcePath != null) {
+			Author author = null;
 			switch (resourcePath) {
-			// case add:
-			// Person person = null;
-			// String gender = req.getParameter(Parameter.gender.name());
-			// if (gender.equals("Male")) {
-			// person = new Male();
-			// }
-			// if (gender.equals("Female")) {
-			// person = new Female();
-			// }
-			// person.setFirstName(req.getParameter(Parameter.firstName.name()));
-			// person.setLastName(req.getParameter(Parameter.lastName.name()));
-			// person.setBirthDate(getDate(req.getParameter(Parameter.birthDate.name())));
-			// personManagementService.addPerson(person);
-			// req.setAttribute("persons",
-			// personManagementService.getAllPersons());
-			// forvardRequest(Page.listPerson, req, res);
-			// break;
+			case add:
+				author = new Author();
+				author.setFirstName(req.getParameter("firstName"));
+				author.setLastName(req.getParameter("lastName"));
+				author.setMiddleName(req.getParameter("middleName"));
+				authorDao.add(author);
+				req.setAttribute("authors", authorDao.getAll());
+				resp.sendRedirect((String)req.getSession().getAttribute("previousPath"));
+				//forwardRequest(Page.listAuthor, req, resp);
+				break;
 			case edit:
-				Author author = authorDao.getById((Long.parseLong(req.getParameter("id"))));
+				author = authorDao.getById((Long.parseLong(req.getParameter("id"))));
 				author.setFirstName(req.getParameter("firstName"));
 				author.setLastName(req.getParameter("lastName"));
 				author.setMiddleName(req.getParameter("middleName"));
 				authorDao.update(author);
 				System.out.println("<-----POST------" + resourcePath);
-				req.setAttribute("authors", authorDao.getAll());
+				req.setAttribute("authors", authorDao.getAll());							
 				forwardRequest(Page.listAuthor, req, resp);
 				break;
 			default:

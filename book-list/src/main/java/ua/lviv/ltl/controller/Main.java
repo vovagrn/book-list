@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ua.lviv.ltl.util.UrlHistory;
+
 /**
  * Servlet implementation class Main
  */
@@ -27,6 +29,12 @@ public class Main extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("author/list");
+		UrlHistory urlHistory = (UrlHistory) request.getSession().getAttribute("history");
+		if(urlHistory == null){
+			request.getSession().setAttribute("history", new UrlHistory());
+		}
+		
+		
 	}
 
 	/**

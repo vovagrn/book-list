@@ -34,7 +34,7 @@
 						> ${author.firstName} ${author.lastName} ${author.middleName}<br>
 				</c:forEach>
 			</div>
-
+			<a href="<c:url value="/author/add"/>">Add Author</a><br>
 			<input type="submit" value="Submit">
 		</form>
 	</div>
