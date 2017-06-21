@@ -11,6 +11,7 @@ import ua.lviv.ltl.dao.BookDao;
 import ua.lviv.ltl.dao.impl.DaoFactory;
 import ua.lviv.ltl.model.Author;
 import ua.lviv.ltl.model.Book;
+import ua.lviv.ltl.util.UrlHistory;
 
 @WebServlet("/book/*")
 public class BookManagementController extends BaseManagementController {
@@ -20,21 +21,13 @@ public class BookManagementController extends BaseManagementController {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		super.doGet(req, resp);
 		DaoFactory daoFactory = DaoFactory.getInstance();
 		BookDao bookDao = daoFactory.getBookDao();
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
-		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
-		req.getSession().setAttribute("previousPath", req.getSession().getAttribute("path"));
-		req.getSession().setAttribute("path", req.getSession().getAttribute("lastPath"));
-		req.getSession().setAttribute("lastPath", (req.getRequestURL().append('?').append(req.getQueryString())).toString());
-		System.out.println("<-----------" + req.getSession().getAttribute("previousPath"));
-		System.out.println("<-----------" + req.getSession().getAttribute("path"));
-		System.out.println("<-----------" + req.getSession().getAttribute("lastPath"));
-		
-		
-		
-		
+		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());	
+				
 		System.out.println("<-----------" + resourcePath);
 		if (resourcePath != null) {
 			switch (resourcePath) {
@@ -58,7 +51,9 @@ public class BookManagementController extends BaseManagementController {
 			case delete:
 				bookDao.delete(bookDao.getById(Long.parseLong(req.getParameter("id"))));
 				req.setAttribute("books", bookDao.getAll());
-				forwardRequest(Page.listBook, req, resp);
+				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
+				resp.sendRedirect(history.getPrevious());
+				//forwardRequest(Page.listBook, req, resp);
 				break;
 			default:
 				break;
@@ -93,16 +88,7 @@ public class BookManagementController extends BaseManagementController {
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
 		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
-		req.getSession().setAttribute("previousPath", req.getSession().getAttribute("path"));
-		req.getSession().setAttribute("path", req.getSession().getAttribute("lastPath"));
-		req.getSession().setAttribute("lastPath", (req.getRequestURL().append('?').append(req.getQueryString())).toString());
-		System.out.println("<-----------" + req.getSession().getAttribute("previousPath"));
-		System.out.println("<-----------" + req.getSession().getAttribute("path"));
-		System.out.println("<-----------" + req.getSession().getAttribute("lastPath"));
 		
-		
-		
-
 		Book book = null;
 		String[] ids = null;
 		if (resourcePath != null) {

@@ -1,26 +1,26 @@
 package ua.lviv.ltl.util;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
-public class UrlHistory {
+public class UrlHistory {	
 	
-	private HttpSession session;
-	private List<String> history = new ArrayList();
+	private List<String> history = new ArrayList<String>();
 	
-	public UrlHistory() {
-		this.session = session;
+	public UrlHistory() {		
 	}
 	
 	public String getPrevious(){
-		return history.get(history.size() - 1);
+		return history.get(history.size() - 2);
 	}
 	
-	public void save(String point){
+	public void add(String point){
 		history.add(point);
+	}
+
+	@Override
+	public String toString() {
+		return history.toString();
 	}
 
 }

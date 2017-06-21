@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import ua.lviv.ltl.dao.AuthorDao;
 import ua.lviv.ltl.dao.impl.DaoFactory;
 import ua.lviv.ltl.model.Author;
+import ua.lviv.ltl.util.UrlHistory;
 
 @WebServlet("/author/*")
 public class AuthorManagementController extends BaseManagementController {
@@ -18,19 +19,12 @@ public class AuthorManagementController extends BaseManagementController {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		super.doGet(req, resp);
 		DaoFactory daoFactory = DaoFactory.getInstance();
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
-		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());		
-		req.getSession().setAttribute("previousPath", req.getSession().getAttribute("path"));
-		req.getSession().setAttribute("path", req.getSession().getAttribute("lastPath"));
-		req.getSession().setAttribute("lastPath", (req.getRequestURL().append('?').append(req.getQueryString())).toString());
-		System.out.println("<-----------" + req.getSession().getAttribute("previousPath"));
-		System.out.println("<-----------" + req.getSession().getAttribute("path"));
-		System.out.println("<-----------" + req.getSession().getAttribute("lastPath"));
-		
-		
-		
+		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
+
 		System.out.println("<-----------" + resourcePath);
 		if (resourcePath != null) {
 			switch (resourcePath) {
@@ -52,7 +46,9 @@ public class AuthorManagementController extends BaseManagementController {
 			case delete:
 				authorDao.delete(authorDao.getById(Long.parseLong(req.getParameter("id"))));
 				req.setAttribute("authors", authorDao.getAll());
-				forwardRequest(Page.listAuthor, req, resp);
+				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
+				resp.sendRedirect(history.getPrevious());
+				//forwardRequest(Page.listAuthor, req, resp);
 				break;
 			default:
 				break;
@@ -66,17 +62,8 @@ public class AuthorManagementController extends BaseManagementController {
 		DaoFactory daoFactory = DaoFactory.getInstance();
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
-		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());		
-		req.getSession().setAttribute("previousPath", req.getSession().getAttribute("path"));
-		req.getSession().setAttribute("path", req.getSession().getAttribute("lastPath"));
-		req.getSession().setAttribute("lastPath", (req.getRequestURL().append('?').append(req.getQueryString())).toString());
-		System.out.println("<-----------" + req.getSession().getAttribute("previousPath"));
-		System.out.println("<-----------" + req.getSession().getAttribute("path"));
-		System.out.println("<-----------" + req.getSession().getAttribute("lastPath"));
-		
-		
-		
-		
+		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
+
 		if (resourcePath != null) {
 			Author author = null;
 			switch (resourcePath) {
@@ -87,8 +74,10 @@ public class AuthorManagementController extends BaseManagementController {
 				author.setMiddleName(req.getParameter("middleName"));
 				authorDao.add(author);
 				req.setAttribute("authors", authorDao.getAll());
-				resp.sendRedirect((String)req.getSession().getAttribute("previousPath"));
-				//forwardRequest(Page.listAuthor, req, resp);
+				// resp.sendRedirect((String)req.getSession().getAttribute("previousPath"));
+				//forwardRequest("/author/list", req, resp);
+				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
+				resp.sendRedirect(history.getPrevious());
 				break;
 			case edit:
 				author = authorDao.getById((Long.parseLong(req.getParameter("id"))));
@@ -97,7 +86,7 @@ public class AuthorManagementController extends BaseManagementController {
 				author.setMiddleName(req.getParameter("middleName"));
 				authorDao.update(author);
 				System.out.println("<-----POST------" + resourcePath);
-				req.setAttribute("authors", authorDao.getAll());							
+				req.setAttribute("authors", authorDao.getAll());
 				forwardRequest(Page.listAuthor, req, resp);
 				break;
 			default:
