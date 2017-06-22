@@ -11,8 +11,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -41,6 +39,18 @@ public class Book extends BaseModel {
 
 	@Column(name = "description")
 	private String description;
+	
+	@Column(name = "pageCount")
+	private Integer pageCount;
+	
+	@Column(name = "publisher")
+	private String publisher;
+	
+	@Column(name = "publishYear")
+	private Integer publishYear;
+	
+	@Column(name = "image")
+	private byte[] image;
 
 	@Column(name = "isbn")
 	private int isbn;
@@ -51,14 +61,6 @@ public class Book extends BaseModel {
 	@JoinTable(name = "book_author", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "author_id") })
 	private Set<Author> authors = new LinkedHashSet<>();
-
-	public Set<Author> getAuthors() {
-		return authors;
-	}
-
-	public void setAuthors(Set<Author> authors) {
-		this.authors = authors;
-	}
 
 	public String getTitle() {
 		return title;
@@ -76,6 +78,30 @@ public class Book extends BaseModel {
 		this.description = description;
 	}
 
+	public Integer getPageCount() {
+		return pageCount;
+	}
+
+	public void setPageCount(Integer pageCount) {
+		this.pageCount = pageCount;
+	}
+
+	public Integer getPublishYear() {
+		return publishYear;
+	}
+
+	public void setPublishYear(Integer publishYear) {
+		this.publishYear = publishYear;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
 	public int getIsbn() {
 		return isbn;
 	}
@@ -84,10 +110,12 @@ public class Book extends BaseModel {
 		this.isbn = isbn;
 	}
 
-	@Override
-	public String toString() {
-		return "Book [title=" + title + ", description=" + description + ", isbn=" + isbn + ", authors=" + ", getId()="
-				+ getId() + "]";
+	public Set<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(Set<Author> authors) {
+		this.authors = authors;
 	}
 
 	@Override
@@ -96,6 +124,8 @@ public class Book extends BaseModel {
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + isbn;
+		result = prime * result + ((pageCount == null) ? 0 : pageCount.hashCode());
+		result = prime * result + ((publishYear == null) ? 0 : publishYear.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -116,6 +146,16 @@ public class Book extends BaseModel {
 			return false;
 		if (isbn != other.isbn)
 			return false;
+		if (pageCount == null) {
+			if (other.pageCount != null)
+				return false;
+		} else if (!pageCount.equals(other.pageCount))
+			return false;
+		if (publishYear == null) {
+			if (other.publishYear != null)
+				return false;
+		} else if (!publishYear.equals(other.publishYear))
+			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -123,5 +163,7 @@ public class Book extends BaseModel {
 			return false;
 		return true;
 	}
+
+	
 
 }

@@ -18,9 +18,9 @@ public abstract class BaseManagementController extends HttpServlet {
 	protected static void forwardRequest(Page page, HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		req.getRequestDispatcher("/WEB-INF/view/" + page.name() + ".jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/view/new" + page.name() + ".jsp").forward(req, resp);
 	}
-	
+
 	protected static void forwardRequest(String path, HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
@@ -51,22 +51,10 @@ public abstract class BaseManagementController extends HttpServlet {
 	}
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		UrlHistory urlHistory = (UrlHistory) req.getSession(true).getAttribute("history");
-//		urlHistory.add(getFullURL(req));
-//		System.out.println("<-----:"+urlHistory+"------->");
-		super.service(req, resp);
-	}
-
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UrlHistory urlHistory = (UrlHistory) req.getSession(true).getAttribute("history");
 		urlHistory.add(getFullURL(req));
-		System.out.println("<-----:"+urlHistory+"------->");		
+		System.out.println("<-----:" + urlHistory + "------->");
 	}
-	
-	
-	
-	
 
 }
