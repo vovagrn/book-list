@@ -40,6 +40,7 @@ public class BookManagementController extends BaseManagementController {
 				forwardRequest(Page.addBook, req, resp);
 				break;
 			case list:
+				req.setAttribute("authors", authorDao.getAll());
 				req.setAttribute("books", bookDao.getAll());
 				forwardRequest(Page.listBook, req, resp);
 				break;

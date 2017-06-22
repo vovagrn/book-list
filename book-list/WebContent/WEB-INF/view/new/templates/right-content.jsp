@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 	
 	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="right-content">
 	<div class="box-sh">
@@ -11,7 +13,7 @@
 
 	<c:forEach var="book" items="${books}" varStatus="status">
 		<div class="item">
-			<img src="images/prev.jpg" width="100" height="147" alt="" />
+			<img src="<c:url value="/resources/images/prev.jpg"/>" width="100" height="147" alt="" />
 
 			<div class="info">
 				<a class="title" href="view?id=${book.id}">Бородино</a> 

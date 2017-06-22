@@ -11,11 +11,11 @@ public class SessionListener implements HttpSessionListener {
 
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
-		UrlHistory urlHistory = (UrlHistory) se.getSession().getAttribute("history");
-		if (urlHistory == null) {
-			se.getSession().setAttribute("history", new UrlHistory());
+//		UrlHistory urlHistory = (UrlHistory) se.getSession().getAttribute("history");
+//		if (urlHistory == null) {
+//			se.getSession().setAttribute("history", new UrlHistory());
 			System.out.println("<----LISTENER----->");
-		}
+//		}
 	}
 
 	@Override

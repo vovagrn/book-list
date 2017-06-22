@@ -61,6 +61,16 @@ public class Book extends BaseModel {
 	@JoinTable(name = "book_author", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "author_id") })
 	private Set<Author> authors = new LinkedHashSet<>();
+	
+	
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
 
 	public String getTitle() {
 		return title;
