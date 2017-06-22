@@ -29,8 +29,10 @@ public class AuthorManagementController extends BaseManagementController {
 		if (resourcePath != null) {
 			switch (resourcePath) {
 			case view:
-				req.setAttribute("author", authorDao.getById(Long.parseLong(req.getParameter("id"))));
-				forwardRequest(Page.viewAuthor, req, resp);
+				Author author = authorDao.getById(Long.parseLong(req.getParameter("id")));
+				req.setAttribute("books", author.getBooks());
+				req.setAttribute("authors", authorDao.getAll());
+				forwardRequest(Page.listBook, req, resp);
 				break;
 			case add:
 				forwardRequest(Page.addAuthor, req, resp);

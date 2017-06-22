@@ -16,7 +16,7 @@
 			<img src="<c:url value="/resources/images/prev.jpg"/>" width="100" height="147" alt="" />
 
 			<div class="info">
-				<a class="title" href="view?id=${book.id}">Бородино</a> 
+				<a class="title" href="<c:url value="/book/view?id=${book.id}"/>">${book.title}</a> 
 				<span>М. Ю. Лермонтов</span>
 				<p>${book.pageCount}страниц</p>
 				<p>Издательство: ${book.publisher}</p>
