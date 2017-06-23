@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import ua.lviv.ltl.dao.AuthorDao;
 import ua.lviv.ltl.dao.BookDao;
 import ua.lviv.ltl.dao.impl.DaoFactory;
-import ua.lviv.ltl.model.Author;
 import ua.lviv.ltl.model.Book;
 import ua.lviv.ltl.util.UrlHistory;
 
@@ -26,9 +25,8 @@ public class BookManagementController extends BaseManagementController {
 		BookDao bookDao = daoFactory.getBookDao();
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
-		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());	
-				
-		System.out.println("<-----------" + resourcePath);
+		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
+		
 		if (resourcePath != null) {
 			switch (resourcePath) {
 			case view:
@@ -54,31 +52,11 @@ public class BookManagementController extends BaseManagementController {
 				req.setAttribute("books", bookDao.getAll());
 				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
 				resp.sendRedirect(history.getPrevious());
-				//forwardRequest(Page.listBook, req, resp);
+				// forwardRequest(Page.listBook, req, resp);
 				break;
 			default:
 				break;
 			}
-
-			// DaoFactory daoFactory = DaoFactory.getInstance();
-			// BookDao bookDao = daoFactory.getBookDao();
-			//
-			// String bookId = req.getParameter("id");
-			// if (bookId == null) {
-			// req.getRequestDispatcher("/WEB-INF/view/home.jsp").forward(req,
-			// resp);
-			// } else {
-			// Book book = null;
-			// try {
-			// book = bookDao.getById(Long.parseLong(bookId));
-			// } catch (NumberFormatException | DaoException e) {
-			// e.printStackTrace();
-			// }
-			// List<Author> authors = book.getAuthors();
-			// req.setAttribute("authors", authors);
-			// req.getRequestDispatcher("/WEB-INF/view/home.jsp").forward(req,
-			// resp);
-			// }
 		}
 	}
 
@@ -89,7 +67,7 @@ public class BookManagementController extends BaseManagementController {
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
 		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
-		
+
 		Book book = null;
 		String[] ids = null;
 		if (resourcePath != null) {
@@ -103,48 +81,28 @@ public class BookManagementController extends BaseManagementController {
 				ids = req.getParameterValues("id");
 				if (ids != null) {
 					for (String id : ids) {
-
 						book.getAuthors().add(authorDao.getById(Long.parseLong(id)));
-
 					}
-					System.out.println("<-----------");
 				}
 				bookDao.add(book);
 				req.setAttribute("books", bookDao.getAll());
 				forwardRequest(Page.listBook, req, resp);
-
-				// Person person = null;
-				// String gender = req.getParameter(Parameter.gender.name());
-				// if (gender.equals("Male")) {
-				// person = new Male();
-				// }
-				// if (gender.equals("Female")) {
-				// person = new Female();
-				// }
-				// person.setFirstName(req.getParameter(Parameter.firstName.name()));
-				// person.setLastName(req.getParameter(Parameter.lastName.name()));
-				// person.setBirthDate(getDate(req.getParameter(Parameter.birthDate.name())));
-				// personManagementService.addPerson(person);
-				// req.setAttribute("persons",
-				// personManagementService.getAllPersons());
-				// forvardRequest(Page.listPerson, req, res);
 				break;
 			case edit:
 				book = bookDao.getById((Long.parseLong(req.getParameter("id"))));
 				book.setTitle(req.getParameter("title"));
 				book.setDescription(req.getParameter("description"));
 				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
-				
+
 				ids = req.getParameterValues("ids");
 				if (ids != null) {
 					book.getAuthors().clear();
 					for (String id : ids) {
-
 						book.getAuthors().add(authorDao.getById(Long.parseLong(id)));
-
 					}
-					System.out.println("<-----------");
-				}else{book.getAuthors().clear();}				
+				} else {
+					book.getAuthors().clear();
+				}
 				bookDao.update(book);
 				req.setAttribute("books", bookDao.getAll());
 				forwardRequest(Page.listBook, req, resp);
@@ -154,5 +112,4 @@ public class BookManagementController extends BaseManagementController {
 			}
 		}
 	}
-
 }
