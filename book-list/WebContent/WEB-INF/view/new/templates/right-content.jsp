@@ -8,25 +8,33 @@
 <div class="right-content">
 	<div class="box-sh">
 		<h1>Найдено ${fn:length(books)} книги</h1>
-		<a href="#"><p>Редактировать</p></a> <a href="#"><p>Добавить</p></a>
+		<a href="#add"><p>Добавить</p></a>
 	</div>
+	
+	<a href="#x" class="overlay" id="add"></a>	
+	<div class="popup">
+            OK
+			<a class="close" title="Закрыть" href="#close"></a>
+        </div>	
 
 	<c:forEach var="book" items="${books}" varStatus="status">
 		<div class="item">
 			<img src="<c:url value="/resources/images/prev.jpg"/>" width="100" height="147" alt="" />
 
 			<div class="info">
-				<a class="title" href="<c:url value="/book/view?id=${book.id}"/>">${book.title}</a> 
+				<a class="title" href="<c:url value="/book/view?id=${book.id}"/>">${book.title}</a> <br>
 				<span>М. Ю. Лермонтов</span>
 				<p>${book.pageCount}страниц</p>
-				<p>Издательство: ${book.publisher}</p>
+				<p>Язык: ${book.language}</p>
 				<p>Год издания: ${book.publishYear}</p>
 				<p>${book.isbn}</p>
 			</div>
 			<div class="clear"></div>
 
-			<a class="mr" href="#"><p class="read">Читать</p></a> <a class="mr"
-				href="#"><p class="download">Скачать</p></a>
+			<a class="mr" href="#"><p class="read">Читать</p></a>
+			<a class="mr" href="#"><p class="download">Скачать</p></a>
+			<a class="mr" href="#"><p class="edit">Изменить</p></a>
+			<a class="mr" id="delete" href="#"><p class="delete">Удалить</p></a>
 		</div>
 	</c:forEach>
 

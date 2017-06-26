@@ -39,16 +39,16 @@ public class Book extends BaseModel {
 
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "pageCount")
 	private Integer pageCount;
-	
-	@Column(name = "publisher")
-	private String publisher;
-	
+
+	@Column(name = "language")
+	private String language;
+
 	@Column(name = "publishYear")
 	private Integer publishYear;
-	
+
 	@Column(name = "image")
 	private byte[] image;
 
@@ -61,15 +61,13 @@ public class Book extends BaseModel {
 	@JoinTable(name = "book_author", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "author_id") })
 	private Set<Author> authors = new LinkedHashSet<>();
-	
-	
 
-	public String getPublisher() {
-		return publisher;
+	public String getLanguage() {
+		return language;
 	}
 
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 	public String getTitle() {
@@ -134,6 +132,7 @@ public class Book extends BaseModel {
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + isbn;
+		result = prime * result + ((language == null) ? 0 : language.hashCode());
 		result = prime * result + ((pageCount == null) ? 0 : pageCount.hashCode());
 		result = prime * result + ((publishYear == null) ? 0 : publishYear.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -156,6 +155,11 @@ public class Book extends BaseModel {
 			return false;
 		if (isbn != other.isbn)
 			return false;
+		if (language == null) {
+			if (other.language != null)
+				return false;
+		} else if (!language.equals(other.language))
+			return false;
 		if (pageCount == null) {
 			if (other.pageCount != null)
 				return false;
@@ -173,7 +177,5 @@ public class Book extends BaseModel {
 			return false;
 		return true;
 	}
-
-	
 
 }
