@@ -13,7 +13,7 @@
 	
 	<a href="#x" class="overlay" id="add"></a>	
 	<div class="popup">
-            OK
+            <jsp:include page="bookForm.jsp" />
 			<a class="close" title="Закрыть" href="#close"></a>
         </div>	
 
@@ -30,7 +30,6 @@
 				<p>${book.isbn}</p>
 			</div>
 			<div class="clear"></div>
-
 			<a class="mr" href="#"><p class="read">Читать</p></a>
 			<a class="mr" href="#"><p class="download">Скачать</p></a>
 			<a class="mr" href="#"><p class="edit">Изменить</p></a>
