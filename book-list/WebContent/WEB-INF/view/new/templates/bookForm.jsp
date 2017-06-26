@@ -29,24 +29,25 @@
 			<!-- Text input-->
 
 			<div class="form-group">
-				<label class="col-md-4 control-label">Last Name</label>
+				<label class="col-md-4 control-label">Количество страниц</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-user"></i></span> <input name="last_name"
-							placeholder="Last Name" class="form-control" type="text">
+							class="glyphicon glyphicon-pencil"></i></span> <input name="page_сount"
+							placeholder="Количество страниц" class="form-control" type="text">
 					</div>
 				</div>
 			</div>
 
 			<!-- Text input-->
 			<div class="form-group">
-				<label class="col-md-4 control-label">E-Mail</label>
+				<label class="col-md-4 control-label">Год издания</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-envelope"></i></span> <input name="email"
-							placeholder="E-Mail Address" class="form-control" type="text">
+							class="glyphicon glyphicon-pencil"></i></span> <input
+							name="publish_year" placeholder="Год издания"
+							class="form-control" type="text">
 					</div>
 				</div>
 			</div>
@@ -55,26 +56,33 @@
 			<!-- Text input-->
 
 			<div class="form-group">
-				<label class="col-md-4 control-label">Phone #</label>
+				<label class="col-md-4 control-label">ISBN</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-earphone"></i></span> <input name="phone"
-							placeholder="(845)555-1212" class="form-control" type="text">
+							class="glyphicon glyphicon-pencil"></i></span> <input name="isbn"
+							placeholder="ISBN" class="form-control" type="text">
 					</div>
 				</div>
 			</div>
 
-			<!-- Text input-->
-
+			<!-- File input-->
 			<div class="form-group">
-				<label class="col-md-4 control-label">Address</label>
+				<label class="col-md-4 control-label">Изображение</label>
 				<div class="col-md-4 inputGroupContainer">
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-home"></i></span> <input name="address"
-							placeholder="Address" class="form-control" type="text">
-					</div>
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-picture"></i></span> <input name="image"
+						type="file">
+				</div>
+			</div>
+			
+			<!-- File input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label">Файл</label>
+				<div class="col-md-4 inputGroupContainer">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-plus"></i></span> <input name="file"
+						type="file">
 				</div>
 			</div>
 
@@ -94,94 +102,19 @@
 			<!-- Select Basic -->
 
 			<div class="form-group">
-				<label class="col-md-4 control-label">State</label>
+				<label class="col-md-4 control-label">Язык</label>
 				<div class="col-md-4 selectContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-list"></i></span> <select name="state"
+							class="glyphicon glyphicon-list"></i></span> <select name="language"
 							class="form-control selectpicker">
-							<option value=" ">Please select your state</option>
-							<option>Alabama</option>
-							<option>Alaska</option>
-							<option>Arizona</option>
-							<option>Arkansas</option>
-							<option>California</option>
-							<option>Colorado</option>
-							<option>Connecticut</option>
-							<option>Delaware</option>
-							<option>District of Columbia</option>
-							<option>Florida</option>
-							<option>Georgia</option>
-							<option>Hawaii</option>
-							<option>daho</option>
-							<option>Illinois</option>
-							<option>Indiana</option>
-							<option>Iowa</option>
-							<option>Kansas</option>
-							<option>Kentucky</option>
-							<option>Louisiana</option>
-							<option>Maine</option>
-							<option>Maryland</option>
-							<option>Mass</option>
-							<option>Michigan</option>
-							<option>Minnesota</option>
-							<option>Mississippi</option>
-							<option>Missouri</option>
-							<option>Montana</option>
-							<option>Nebraska</option>
-							<option>Nevada</option>
-							<option>New Hampshire</option>
-							<option>New Jersey</option>
-							<option>New Mexico</option>
-							<option>New York</option>
-							<option>North Carolina</option>
-							<option>North Dakota</option>
-							<option>Ohio</option>
-							<option>Oklahoma</option>
-							<option>Oregon</option>
-							<option>Pennsylvania</option>
-							<option>Rhode Island</option>
-							<option>South Carolina</option>
-							<option>South Dakota</option>
-							<option>Tennessee</option>
-							<option>Texas</option>
-							<option>Uttah</option>
-							<option>Vermont</option>
-							<option>Virginia</option>
-							<option>Washington</option>
-							<option>West Virginia</option>
-							<option>Wisconsin</option>
-							<option>Wyoming</option>
+							<option value=" ">Please select language</option>
+							<option>English</option>
+							<option>Russian</option>
 						</select>
 					</div>
 				</div>
-			</div>
-
-			<!-- Text input-->
-
-			<div class="form-group">
-				<label class="col-md-4 control-label">Zip Code</label>
-				<div class="col-md-4 inputGroupContainer">
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-home"></i></span> <input name="zip"
-							placeholder="Zip Code" class="form-control" type="text">
-					</div>
-				</div>
-			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
-				<label class="col-md-4 control-label">Website or domain name</label>
-				<div class="col-md-4 inputGroupContainer">
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-globe"></i></span> <input name="website"
-							placeholder="Website or domain name" class="form-control"
-							type="text">
-					</div>
-				</div>
-			</div>
+			</div>			
 
 			<!-- radio checks -->
 			<div class="form-group">
