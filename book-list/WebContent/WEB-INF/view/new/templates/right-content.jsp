@@ -13,7 +13,7 @@
 	
 	<a href="#x" class="overlay" id="add"></a>	
 	<div class="popup">
-            <jsp:include page="bookForm.jsp" />
+            <jsp:include page="newBookForm.jsp" />
 			<a class="close" title="Закрыть" href="#close"></a>
         </div>	
 

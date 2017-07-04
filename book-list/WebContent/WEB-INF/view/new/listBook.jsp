@@ -13,13 +13,14 @@
 <title><fmt:message key="listBook.title" /></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
- <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
-<link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'>
+<!--  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'> -->
+<!-- <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'> -->
+<!-- <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'> -->
 
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resources/css/main.css"/>">
 <link rel="stylesheet" type="text/css"	href="<c:url value="/resources/css/style-modal.css"/>">
-<link rel="stylesheet" type="text/css"	href="<c:url value="/resources/css/bookFormStyle.css"/>">
+<%-- <link rel="stylesheet" type="text/css"	href="<c:url value="/resources/css/bookFormStyle.css"/>"> --%>
+<link rel="stylesheet" type="text/css"	href="<c:url value="/resources/css/FormStyle.css"/>">
 </head>
 <body>
 
