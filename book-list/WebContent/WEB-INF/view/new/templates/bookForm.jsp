@@ -6,7 +6,7 @@
 
 <div class="container">
 
-	<form class="well form-horizontal" action=" " method="post"
+	<form class="well" action=" " method="post"
 		id="contact_form">
 		<fieldset>
 
@@ -16,8 +16,8 @@
 			<!-- Text input-->
 
 			<div class="form-group">
-				<label class="col-md-4 control-label">Название</label>
-				<div class="col-md-4 inputGroupContainer">
+				<label class="control-label">Название</label>
+				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
 							class="glyphicon glyphicon-book"></i></span> <input name="title"

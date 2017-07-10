@@ -6,103 +6,80 @@
 
 <div class="container">
 
-	<form class="form" action=" " method="post"
-		id="contact_form">
+	<form class="form" action=" " method="post" id="contact_form">
 		<fieldset>
 
 			<!-- Form Name -->
 			<legend>Contact Us Today!</legend>
-
+			
 			<!-- Text input-->
-
 			<div class="form-group">
-				<label class="">Название</label>
-				<div class="">
-					<div class="">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span> 
-						<input name="title"	placeholder="Название" class="form-control" type="text">
-					</div>
-				</div>
-			</div>
-
-			<!-- Text input-->
-
-			<div class="form-group">
-				<label class="col-md-4 control-label">Количество страниц</label>
-				<div class="col-md-4 inputGroupContainer">
+				<div class="label">Название</div>
+				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-pencil"></i></span> <input name="page_сount"
-							placeholder="Количество страниц" class="form-control" type="text">
+						<span class="input-icon"></span> 
+						<input name="page_сount" placeholder="Название" class="form-control" type="text">
 					</div>
 				</div>
 			</div>
 
 			<!-- Text input-->
 			<div class="form-group">
-				<label class="col-md-4 control-label">Год издания</label>
-				<div class="col-md-4 inputGroupContainer">
+				<div class="label">Количество страниц</div>
+				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-pencil"></i></span> <input
-							name="publish_year" placeholder="Год издания"
-							class="form-control" type="text">
+						<span class="input-icon"></span> 
+						<input name="page_сount" placeholder="Количество страниц" class="form-control" type="text">
 					</div>
-				</div>
-			</div>
-
-
-			<!-- Text input-->
-
-			<div class="form-group">
-				<label class="col-md-4 control-label">ISBN</label>
-				<div class="col-md-4 inputGroupContainer">
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-pencil"></i></span> <input name="isbn"
-							placeholder="ISBN" class="form-control" type="text">
-					</div>
-				</div>
-			</div>
-
-			<!-- File input-->
-			<div class="form-group">
-				<label class="col-md-4 control-label">Изображение</label>
-				<div class="col-md-4 inputGroupContainer">
-					<span class="input-group-addon"><i
-						class="glyphicon glyphicon-picture"></i></span> <input name="image"
-						type="file">
 				</div>
 			</div>
 			
-			<!-- File input-->
-			<div class="form-group">
-				<label class="col-md-4 control-label">Файл</label>
-				<div class="col-md-4 inputGroupContainer">
-					<span class="input-group-addon"><i
-						class="glyphicon glyphicon-plus"></i></span> <input name="file"
-						type="file">
-				</div>
-			</div>
-
 			<!-- Text input-->
-
 			<div class="form-group">
-				<label class="col-md-4 control-label">City</label>
-				<div class="col-md-4 inputGroupContainer">
+				<div class="label">Год издания</div>
+				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-home"></i></span> <input name="city"
-							placeholder="city" class="form-control" type="text">
+						<span class="input-icon"></span> 
+						<input name="publish_year" placeholder="Год издания" class="form-control" type="text">
 					</div>
 				</div>
 			</div>
-
+			
+			<!-- Text input-->
+			<div class="form-group">
+				<div class="label">ISBN</div>
+				<div class="inputGroupContainer">
+					<div class="input-group">
+						<span class="input-icon"></span> 
+						<input name="isbn" placeholder="ISBN" class="form-control" type="text">
+					</div>
+				</div>
+			</div>
+			
+			<!-- Select-->
+			<div class="form-group">
+				<div class="label">Язык</div>
+				<div class="inputGroupContainer">
+					<div class="input-group">
+						<span class="input-icon"></span> 
+						<select name="language"
+							class="form-control">
+							<option value=" ">Please select language</option>
+							<option>English</option>
+							<option>Russian</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
 			<!-- Select Basic -->
 
 			<div class="form-group">
 				<label class="col-md-4 control-label">Язык</label>
-				<div class="col-md-4 selectContainer">
+				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
 							class="glyphicon glyphicon-list"></i></span> <select name="language"
@@ -113,24 +90,68 @@
 						</select>
 					</div>
 				</div>
-			</div>			
+			</div>
 
-			<!-- radio checks -->
+
+
+			
+
+			<!-- File input-->
 			<div class="form-group">
-				<label class="col-md-4 control-label">Do you have hosting?</label>
-				<div class="col-md-4">
-					<div class="radio">
-						<label> <input type="radio" name="hosting" value="yes" />
-							Yes
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="hosting" value="no" />
-							No
-						</label>
+				<label class="col-md-4 control-label">Изображение</label>
+				<div class="col-md-4 inputGroupContainer">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-picture"></i></span> <input name="image"
+						type="file">
+				</div>
+			</div>
+
+			<!-- File input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label">Файл</label>
+				<div class="col-md-4 inputGroupContainer">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-plus"></i></span> <input name="file"
+						type="file">
+				</div>
+			</div>
+
+
+
+			<!-- Select Basic -->
+
+			<div class="form-group">
+				<label class="col-md-4 control-label">Язык</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-list"></i></span> <select name="language"
+							class="form-control selectpicker">
+							<option value=" ">Please select language</option>
+							<option>English</option>
+							<option>Russian</option>
+						</select>
 					</div>
 				</div>
 			</div>
+
+			<!-- Select Basic -->
+
+			<div class="form-group">
+				<label class="col-md-4 control-label">Язык</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-list"></i></span> <select name="language"
+							class="form-control selectpicker">
+							<option value=" ">Please select language</option>
+							<option>English</option>
+							<option>Russian</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
 
 			<!-- Text area -->
 
