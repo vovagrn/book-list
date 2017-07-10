@@ -63,104 +63,44 @@
 					<div class="input-group">
 						<span class="input-icon"></span> 
 						<select name="language"
-							class="form-control">
+							class="form-select">
 							<option value=" ">Please select language</option>
 							<option>English</option>
 							<option>Russian</option>
 						</select>
 					</div>
 				</div>
-			</div>
-			
-			
-			
-			
-			<!-- Select Basic -->
-
-			<div class="form-group">
-				<label class="col-md-4 control-label">Язык</label>
-				<div class="col-md-4 inputGroupContainer">
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-list"></i></span> <select name="language"
-							class="form-control selectpicker">
-							<option value=" ">Please select language</option>
-							<option>English</option>
-							<option>Russian</option>
-						</select>
-					</div>
-				</div>
-			</div>
-
-
-
-			
+			</div>			
 
 			<!-- File input-->
 			<div class="form-group">
-				<label class="col-md-4 control-label">Изображение</label>
-				<div class="col-md-4 inputGroupContainer">
-					<span class="input-group-addon"><i
-						class="glyphicon glyphicon-picture"></i></span> <input name="image"
-						type="file">
+			<div class="label">Изображение</div>				
+				<div class="inputGroupContainer">
+					<div class="input-group">
+					<span class="input-icon"></span> 
+					<input name="image" class="form-control" type="file">
+					</div>
 				</div>
 			</div>
-
+			
 			<!-- File input-->
 			<div class="form-group">
-				<label class="col-md-4 control-label">Файл</label>
-				<div class="col-md-4 inputGroupContainer">
-					<span class="input-group-addon"><i
-						class="glyphicon glyphicon-plus"></i></span> <input name="file"
-						type="file">
-				</div>
-			</div>
-
-
-
-			<!-- Select Basic -->
-
-			<div class="form-group">
-				<label class="col-md-4 control-label">Язык</label>
-				<div class="col-md-4 inputGroupContainer">
+			<div class="label">Файл</div>				
+				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-list"></i></span> <select name="language"
-							class="form-control selectpicker">
-							<option value=" ">Please select language</option>
-							<option>English</option>
-							<option>Russian</option>
-						</select>
+					<span class="input-icon"></span> 
+					<input name="file" class="form-control" type="file">
 					</div>
 				</div>
 			</div>
-
-			<!-- Select Basic -->
-
-			<div class="form-group">
-				<label class="col-md-4 control-label">Язык</label>
-				<div class="col-md-4 inputGroupContainer">
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-list"></i></span> <select name="language"
-							class="form-control selectpicker">
-							<option value=" ">Please select language</option>
-							<option>English</option>
-							<option>Russian</option>
-						</select>
-					</div>
-				</div>
-			</div>
-
-
+			
 			<!-- Text area -->
 
 			<div class="form-group">
-				<label class="col-md-4 control-label">Project Description</label>
-				<div class="col-md-4 inputGroupContainer">
+				<div class="label">Project Description</div>					
+				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-pencil"></i></span>
+						<span class="input-icon"></span>
 						<textarea class="form-control" name="comment"
 							placeholder="Project Description"></textarea>
 					</div>
@@ -187,11 +127,11 @@
 	</form>
 </div>
 
-<script
-	src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script
-	src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-<script
-	src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+<!-- <script -->
+<!-- 	src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+<!-- <script -->
+<!-- 	src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script> -->
+<!-- <script -->
+<!-- 	src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script> -->
 
 <script src="<c:url value="/resources/js/index.js"/>"></script>
