@@ -11,14 +11,14 @@
 
 			<!-- Form Name -->
 			<legend>Contact Us Today!</legend>
-			
+
 			<!-- Text input-->
 			<div class="form-group">
 				<div class="label">Название</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-icon"></span> 
-						<input name="page_сount" placeholder="Название" class="form-control" type="text">
+						<span class="input-icon"></span> <input name="page_сount"
+							placeholder="Название" class="form-control" type="text">
 					</div>
 				</div>
 			</div>
@@ -28,41 +28,40 @@
 				<div class="label">Количество страниц</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-icon"></span> 
-						<input name="page_сount" placeholder="Количество страниц" class="form-control" type="text">
+						<span class="input-icon"></span> <input name="page_сount"
+							placeholder="Количество страниц" class="form-control" type="text">
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- Text input-->
 			<div class="form-group">
 				<div class="label">Год издания</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-icon"></span> 
-						<input name="publish_year" placeholder="Год издания" class="form-control" type="text">
+						<span class="input-icon"></span> <input name="publish_year"
+							placeholder="Год издания" class="form-control" type="text">
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- Text input-->
 			<div class="form-group">
 				<div class="label">ISBN</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-icon"></span> 
-						<input name="isbn" placeholder="ISBN" class="form-control" type="text">
+						<span class="input-icon"></span> <input name="isbn"
+							placeholder="ISBN" class="form-control" type="text">
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- Select-->
 			<div class="form-group">
 				<div class="label">Язык</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-icon"></span> 
-						<select name="language"
+						<span class="input-icon"></span> <select name="language"
 							class="form-select">
 							<option value=" ">Please select language</option>
 							<option>English</option>
@@ -70,34 +69,53 @@
 						</select>
 					</div>
 				</div>
-			</div>			
+			</div>
+
+			<!-- Box input-->
+			<div class="form-group">
+				<div class="label">Изображение</div>
+				<div class="inputGroupContainer">
+					<div class="input-group">
+						<span class="input-icon"></span>
+						<div class="box-checkbox">
+							<c:forEach var="author" items="${authors}" varStatus="status">
+								<input class="checkbox" type="checkbox" name="ids" value="${author.id}"
+									<c:forEach var="bookAuthor" items="${book.authors}" varStatus="status">						
+							<c:if test="${bookAuthor.id == author.id}">checked</c:if>					
+						</c:forEach>> 
+						<span class="checkbox-label">${author.firstName} ${author.lastName} ${author.middleName}</span><br>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+			</div>
 
 			<!-- File input-->
 			<div class="form-group">
-			<div class="label">Изображение</div>				
+				<div class="label">Изображение</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
-					<span class="input-icon"></span> 
-					<input name="image" class="form-control" type="file">
+						<span class="input-icon"></span> <input name="image"
+							class="form-control" type="file">
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- File input-->
 			<div class="form-group">
-			<div class="label">Файл</div>				
+				<div class="label">Файл</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
-					<span class="input-icon"></span> 
-					<input name="file" class="form-control" type="file">
+						<span class="input-icon"></span> <input name="file"
+							class="form-control" type="file">
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- Text area -->
 
 			<div class="form-group">
-				<div class="label">Project Description</div>					
+				<div class="label">Project Description</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span>

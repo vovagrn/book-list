@@ -89,6 +89,20 @@
 	border-right: 0;
 }
 
+.box-checkbox {
+	border: 1px solid #ccc;
+	background-color: white;
+	min-height: 80px;
+	padding: 6px 12px;
+	overflow-y: scroll;
+	width:220px; 
+	height: 100px;
+}
+
+.checkbox-label {
+	padding-bottom: 5px;
+}
+
 input {
 	height: 18px;
 	border: 1px solid #ccc;
@@ -102,4 +116,8 @@ select {
 textarea {
 	border: 1px solid #ccc;
 	min-height: 80px;
+}
+
+.checkbox {
+	
 }
