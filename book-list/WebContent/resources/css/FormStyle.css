@@ -95,12 +95,12 @@
 	min-height: 80px;
 	padding: 6px 12px;
 	overflow-y: scroll;
-	width:220px; 
+	width: 220px;
 	height: 100px;
 }
 
 .checkbox-label {
-	padding-bottom: 5px;
+	vertical-align: super;
 }
 
 input {
@@ -119,5 +119,9 @@ textarea {
 }
 
 .checkbox {
+	margin: 0px;
+}
+
+.checkbox-content{
 	
 }

@@ -6,7 +6,7 @@
 
 <div class="container">
 
-	<form class="form" action=" " method="post" id="contact_form">
+	<form class="form" action="add" method="post" id="contact_form">
 		<fieldset>
 
 			<!-- Form Name -->
@@ -17,7 +17,7 @@
 				<div class="label">Название</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-icon"></span> <input name="page_сount"
+						<span class="input-icon"></span> <input name="title"
 							placeholder="Название" class="form-control" type="text">
 					</div>
 				</div>
@@ -73,17 +73,21 @@
 
 			<!-- Box input-->
 			<div class="form-group">
-				<div class="label">Изображение</div>
+				<div class="label">Автор</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span>
 						<div class="box-checkbox">
 							<c:forEach var="author" items="${authors}" varStatus="status">
-								<input class="checkbox" type="checkbox" name="ids" value="${author.id}"
-									<c:forEach var="bookAuthor" items="${book.authors}" varStatus="status">						
+								<div class="checkbox-content">
+									<input class="checkbox" type="checkbox" name="id"
+										value="${author.id}"
+										<c:forEach var="bookAuthor" items="${book.authors}" varStatus="status">						
 							<c:if test="${bookAuthor.id == author.id}">checked</c:if>					
-						</c:forEach>> 
-						<span class="checkbox-label">${author.firstName} ${author.lastName} ${author.middleName}</span><br>
+						</c:forEach>>
+									<span class="checkbox-label">${author.firstName}
+										${author.lastName} ${author.middleName}</span><br>
+								</div>
 							</c:forEach>
 						</div>
 					</div>
@@ -115,12 +119,12 @@
 			<!-- Text area -->
 
 			<div class="form-group">
-				<div class="label">Project Description</div>
+				<div class="label">Description</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span>
-						<textarea class="form-control" name="comment"
-							placeholder="Project Description"></textarea>
+						<textarea class="form-control" name="description"
+							placeholder="Description"></textarea>
 					</div>
 				</div>
 			</div>

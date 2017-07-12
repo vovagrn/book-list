@@ -86,7 +86,9 @@ public class BookManagementController extends BaseManagementController {
 				}
 				bookDao.add(book);
 				req.setAttribute("books", bookDao.getAll());
-				forwardRequest(Page.listBook, req, resp);
+//				forwardRequest(Page.listBook, req, resp);
+				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
+				resp.sendRedirect(history.getPrevious());
 				break;
 			case edit:
 				book = bookDao.getById((Long.parseLong(req.getParameter("id"))));

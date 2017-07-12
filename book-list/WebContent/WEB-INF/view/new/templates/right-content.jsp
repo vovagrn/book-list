@@ -32,8 +32,8 @@
 			<div class="clear"></div>
 			<a class="mr" href="#"><p class="read">Читать</p></a>
 			<a class="mr" href="#"><p class="download">Скачать</p></a>
-			<a class="mr" href="#"><p class="edit">Изменить</p></a>
-			<a class="mr" id="delete" href="#"><p class="delete">Удалить</p></a>
+			<a class="mr" href="edit?id=${book.id}"><p class="edit">Изменить</p></a>
+			<a class="mr" id="delete" href="delete?id=${book.id}"><p class="delete">Удалить</p></a>
 		</div>
 	</c:forEach>
 
