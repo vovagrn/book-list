@@ -19,7 +19,7 @@
 
 	<c:forEach var="book" items="${books}" varStatus="status">
 		<div class="item">
-			<img src="<c:url value="/resources/images/prev.jpg"/>" width="100" height="147" alt="" />
+			<img src="<c:url value="/image?bookId=${book.id}"/>" width="100" height="147" alt="" />
 
 			<div class="info">
 				<a class="title" href="<c:url value="/book/view?id=${book.id}"/>">${book.title}</a> <br>

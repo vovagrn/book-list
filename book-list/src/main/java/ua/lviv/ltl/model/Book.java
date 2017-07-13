@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -48,8 +49,9 @@ public class Book extends BaseModel {
 
 	@Column(name = "publishYear")
 	private Integer publishYear;
-
-	@Column(name = "image")
+	
+	@Lob()
+	@Column(name = "image", columnDefinition = "MEDIUMBLOB")	
 	private byte[] image;
 
 	@Column(name = "isbn")

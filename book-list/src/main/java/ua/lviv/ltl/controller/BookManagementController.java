@@ -1,10 +1,16 @@
 package ua.lviv.ltl.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+import org.apache.commons.io.IOUtils;
 
 import ua.lviv.ltl.dao.AuthorDao;
 import ua.lviv.ltl.dao.BookDao;
@@ -13,6 +19,7 @@ import ua.lviv.ltl.model.Book;
 import ua.lviv.ltl.util.UrlHistory;
 
 @WebServlet("/book/*")
+@MultipartConfig(maxFileSize = 16177215)
 public class BookManagementController extends BaseManagementController {
 
 	private static final long serialVersionUID = 1L;
@@ -26,7 +33,7 @@ public class BookManagementController extends BaseManagementController {
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
 		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
-		
+
 		if (resourcePath != null) {
 			switch (resourcePath) {
 			case view:
@@ -81,6 +88,15 @@ public class BookManagementController extends BaseManagementController {
 				book.setPageCount(Integer.parseInt(req.getParameter("page_count")));
 				book.setPublishYear(Integer.parseInt(req.getParameter("publish_year")));
 
+				InputStream inputStream = null;
+				Part filePart = req.getPart("image");
+				if (filePart != null) {
+					inputStream = filePart.getInputStream();
+				}
+				if (inputStream != null) {
+					book.setImage(IOUtils.toByteArray(inputStream));
+				}
+
 				ids = req.getParameterValues("id");
 				if (ids != null) {
 					for (String id : ids) {
@@ -89,7 +105,7 @@ public class BookManagementController extends BaseManagementController {
 				}
 				bookDao.add(book);
 				req.setAttribute("books", bookDao.getAll());
-//				forwardRequest(Page.listBook, req, resp);
+				// forwardRequest(Page.listBook, req, resp);
 				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
 				resp.sendRedirect(history.getPrevious());
 				break;

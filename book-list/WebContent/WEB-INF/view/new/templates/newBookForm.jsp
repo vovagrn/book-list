@@ -6,7 +6,7 @@
 
 <div class="container">
 
-	<form class="form" action="add" method="post" id="contact_form">
+	<form class="form" action="add" method="post" id="contact_form" enctype="multipart/form-data">
 		<fieldset>
 
 			<!-- Form Name -->
