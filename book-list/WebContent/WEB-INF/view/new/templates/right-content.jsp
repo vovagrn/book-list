@@ -23,11 +23,13 @@
 
 			<div class="info">
 				<a class="title" href="<c:url value="/book/view?id=${book.id}"/>">${book.title}</a> <br>
-				<span>М. Ю. Лермонтов</span>
-				<p>${book.pageCount}страниц</p>
+				<c:forEach var="author" items="${book.authors}" varStatus="status">
+				<span>${author.firstName} ${author.lastName} ${author.middleName}</span>
+				</c:forEach>
+				<p>${book.pageCount} страниц</p>
 				<p>Язык: ${book.language}</p>
 				<p>Год издания: ${book.publishYear}</p>
-				<p>${book.isbn}</p>
+				<p>ISBN: ${book.isbn}</p>
 			</div>
 			<div class="clear"></div>
 			<a class="mr" href="#"><p class="read">Читать</p></a>

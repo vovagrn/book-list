@@ -75,8 +75,11 @@ public class BookManagementController extends BaseManagementController {
 			case add:
 				book = new Book();
 				book.setTitle(req.getParameter("title"));
+				book.setLanguage(req.getParameter("language"));
 				book.setDescription(req.getParameter("description"));
 				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
+				book.setPageCount(Integer.parseInt(req.getParameter("page_count")));
+				book.setPublishYear(Integer.parseInt(req.getParameter("publish_year")));
 
 				ids = req.getParameterValues("id");
 				if (ids != null) {

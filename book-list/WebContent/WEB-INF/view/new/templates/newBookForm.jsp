@@ -28,7 +28,7 @@
 				<div class="label">Количество страниц</div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
-						<span class="input-icon"></span> <input name="page_сount"
+						<span class="input-icon"></span> <input name="page_count"
 							placeholder="Количество страниц" class="form-control" type="text">
 					</div>
 				</div>
