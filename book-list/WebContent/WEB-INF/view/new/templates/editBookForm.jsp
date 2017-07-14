@@ -6,11 +6,14 @@
 
 <div class="container">
 
-	<form class="form" action="add" method="post" id="contact_form" enctype="multipart/form-data">
+	<form class="form" action="edit" method="post" id="contact_form" enctype="multipart/form-data">
 		<fieldset>
 
 			<!-- Form Name -->
 			<legend>Contact Us Today!</legend>
+			 
+			<!-- Text hidden--> 
+			<input type="hidden" name="id" value="${book.id}">
 
 			<!-- Text input-->
 			<div class="form-group">
@@ -80,7 +83,7 @@
 						<div class="box-checkbox">
 							<c:forEach var="author" items="${authors}" varStatus="status">
 								<div class="checkbox-content">
-									<input class="checkbox" type="checkbox" name="id"
+									<input class="checkbox" type="checkbox" name="authorsId"
 										value="${author.id}"
 										<c:forEach var="bookAuthor" items="${book.authors}" varStatus="status">						
 							<c:if test="${bookAuthor.id == author.id}">checked</c:if>					

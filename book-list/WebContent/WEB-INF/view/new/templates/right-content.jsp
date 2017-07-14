@@ -38,7 +38,7 @@
 					<span>${author.firstName} ${author.lastName}
 						${author.middleName}</span>
 				</c:forEach>
-				<p>${book.pageCount}страниц</p>
+				<p>${book.pageCount} страниц</p>
 				<p>Язык: ${book.language}</p>
 				<p>Год издания: ${book.publishYear}</p>
 				<p>ISBN: ${book.isbn}</p>

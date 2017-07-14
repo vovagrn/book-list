@@ -76,7 +76,9 @@ public class BookManagementController extends BaseManagementController {
 		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
 
 		Book book = null;
-		String[] ids = null;
+		String[] authorsId = null;
+		InputStream inputStream = null;
+		Part filePart = null;
 		if (resourcePath != null) {
 			switch (resourcePath) {
 			case add:
@@ -87,9 +89,8 @@ public class BookManagementController extends BaseManagementController {
 				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
 				book.setPageCount(Integer.parseInt(req.getParameter("page_count")));
 				book.setPublishYear(Integer.parseInt(req.getParameter("publish_year")));
-
-				InputStream inputStream = null;
-				Part filePart = req.getPart("image");
+				
+				filePart = req.getPart("image");
 				if (filePart != null) {
 					inputStream = filePart.getInputStream();
 				}
@@ -97,36 +98,54 @@ public class BookManagementController extends BaseManagementController {
 					book.setImage(IOUtils.toByteArray(inputStream));
 				}
 
-				ids = req.getParameterValues("id");
-				if (ids != null) {
-					for (String id : ids) {
+				authorsId = req.getParameterValues("authorsId");
+				if (authorsId != null) {
+					for (String id : authorsId) {
 						book.getAuthors().add(authorDao.getById(Long.parseLong(id)));
 					}
 				}
 				bookDao.add(book);
-				req.setAttribute("books", bookDao.getAll());
+				resp.sendRedirect(req.getServletContext().getContextPath()+"/book/list");
+				//req.setAttribute("books", bookDao.getAll());
 				// forwardRequest(Page.listBook, req, resp);
-				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
-				resp.sendRedirect(history.getPrevious());
+				//UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
+				//resp.sendRedirect(history.getPrevious());
 				break;
 			case edit:
 				book = bookDao.getById((Long.parseLong(req.getParameter("id"))));
+//				book.setTitle(req.getParameter("title"));
+//				book.setDescription(req.getParameter("description"));
+//				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
+				
 				book.setTitle(req.getParameter("title"));
+				book.setLanguage(req.getParameter("language"));
 				book.setDescription(req.getParameter("description"));
 				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
+				book.setPageCount(Integer.parseInt(req.getParameter("page_count")));
+				book.setPublishYear(Integer.parseInt(req.getParameter("publish_year")));				
+				
+				filePart = req.getPart("image");
+				System.out.println("<-----"+filePart+"----->");
+				if (filePart != null && filePart.getSize()>0) {
+					inputStream = filePart.getInputStream();
+				}
+				if (inputStream != null) {
+					book.setImage(IOUtils.toByteArray(inputStream));
+				}
 
-				ids = req.getParameterValues("ids");
-				if (ids != null) {
+				authorsId = req.getParameterValues("authorsId");
+				if (authorsId != null) {
 					book.getAuthors().clear();
-					for (String id : ids) {
+					for (String id : authorsId) {
 						book.getAuthors().add(authorDao.getById(Long.parseLong(id)));
 					}
 				} else {
 					book.getAuthors().clear();
 				}
 				bookDao.update(book);
-				req.setAttribute("books", bookDao.getAll());
-				forwardRequest(Page.listBook, req, resp);
+				resp.sendRedirect(req.getServletContext().getContextPath()+"/book/list");
+				//req.setAttribute("books", bookDao.getAll());
+				//forwardRequest(Page.listBook, req, resp);
 				break;
 			default:
 				break;

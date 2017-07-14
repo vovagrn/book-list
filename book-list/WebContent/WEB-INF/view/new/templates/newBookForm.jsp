@@ -80,7 +80,7 @@
 						<div class="box-checkbox">
 							<c:forEach var="author" items="${authors}" varStatus="status">
 								<div class="checkbox-content">
-									<input class="checkbox" type="checkbox" name="id"
+									<input class="checkbox" type="checkbox" name="authorsId"
 										value="${author.id}"
 										<c:forEach var="bookAuthor" items="${book.authors}" varStatus="status">						
 							<c:if test="${bookAuthor.id == author.id}">checked</c:if>					
