@@ -16,6 +16,7 @@ import ua.lviv.ltl.dao.AuthorDao;
 import ua.lviv.ltl.dao.BookDao;
 import ua.lviv.ltl.dao.impl.DaoFactory;
 import ua.lviv.ltl.model.Book;
+import ua.lviv.ltl.model.Language;
 import ua.lviv.ltl.util.UrlHistory;
 
 @WebServlet("/book/*")
@@ -46,7 +47,8 @@ public class BookManagementController extends BaseManagementController {
 				break;
 			case list:
 				req.setAttribute("authors", authorDao.getAll());
-				req.setAttribute("books", bookDao.getAll());
+				req.setAttribute("books", bookDao.getAll());				
+				req.setAttribute("languages", Language.values());
 				forwardRequest(Page.listBook, req, resp);
 				break;
 			case edit:
@@ -76,15 +78,20 @@ public class BookManagementController extends BaseManagementController {
 		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
 
 		Book book = null;
-		String[] authorsId = null;
-		InputStream inputStream = null;
 		Part filePart = null;
+		String language = null;
+		String[] authorsId = null;
+		InputStream inputStream = null;		
+		
 		if (resourcePath != null) {
 			switch (resourcePath) {
 			case add:
 				book = new Book();
 				book.setTitle(req.getParameter("title"));
-				book.setLanguage(req.getParameter("language"));
+				language = req.getParameter("language");
+				if(language != null && !language.equals(" ")){					
+					book.setLanguage(Language.valueOf(language));
+				}				
 				book.setDescription(req.getParameter("description"));
 				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
 				book.setPageCount(Integer.parseInt(req.getParameter("page_count")));
@@ -113,19 +120,17 @@ public class BookManagementController extends BaseManagementController {
 				break;
 			case edit:
 				book = bookDao.getById((Long.parseLong(req.getParameter("id"))));
-//				book.setTitle(req.getParameter("title"));
-//				book.setDescription(req.getParameter("description"));
-//				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
-				
-				book.setTitle(req.getParameter("title"));
-				book.setLanguage(req.getParameter("language"));
+				book.setTitle(req.getParameter("title"));				
+				language = req.getParameter("language");
+				if(language != null && !language.equals(" ")){					
+					book.setLanguage(Language.valueOf(language));
+				}		
 				book.setDescription(req.getParameter("description"));
 				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
 				book.setPageCount(Integer.parseInt(req.getParameter("page_count")));
 				book.setPublishYear(Integer.parseInt(req.getParameter("publish_year")));				
 				
-				filePart = req.getPart("image");
-				System.out.println("<-----"+filePart+"----->");
+				filePart = req.getPart("image");				
 				if (filePart != null && filePart.getSize()>0) {
 					inputStream = filePart.getInputStream();
 				}

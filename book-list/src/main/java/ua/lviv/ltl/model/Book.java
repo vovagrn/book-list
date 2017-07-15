@@ -45,7 +45,7 @@ public class Book extends BaseModel {
 	private Integer pageCount;
 
 	@Column(name = "language")
-	private String language;
+	private Language language;
 
 	@Column(name = "publishYear")
 	private Integer publishYear;
@@ -64,12 +64,12 @@ public class Book extends BaseModel {
 			@JoinColumn(name = "author_id") })
 	private Set<Author> authors = new LinkedHashSet<>();
 
-	public String getLanguage() {
+	public Language getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(String language) {
-		this.language = language;
+	public void setLanguage(Language string) {
+		this.language = string;
 	}
 
 	public String getTitle() {

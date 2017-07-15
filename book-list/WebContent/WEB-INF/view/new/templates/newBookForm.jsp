@@ -64,8 +64,9 @@
 						<span class="input-icon"></span> <select name="language"
 							class="form-select">
 							<option value=" ">Please select language</option>
-							<option>English</option>
-							<option>Russian</option>
+							<c:forEach var="language" items="${languages}" varStatus="status">
+								<option>${language}</option>
+							</c:forEach>
 						</select>
 					</div>
 				</div>

@@ -6,7 +6,7 @@
 
 <div class="container">
 
-	<form class="form" action="edit" method="post" id="contact_form" enctype="multipart/form-data">
+	<form class="form" action="edit" method="post" id="contact_form" enctype="multipart/form-data" accept-charset="UTF-8">
 		<fieldset>
 
 			<!-- Form Name -->
@@ -67,8 +67,10 @@
 						<span class="input-icon"></span> <select name="language"
 							class="form-select">
 							<option value=" ">Please select language</option>
-							<option>English</option>
-							<option>Russian</option>
+							<c:forEach var="language" items="${languages}" varStatus="status">
+								<option <c:if test="${language == book.language}">selected</c:if>>${language}</option>
+								
+							</c:forEach>
 						</select>
 					</div>
 				</div>
