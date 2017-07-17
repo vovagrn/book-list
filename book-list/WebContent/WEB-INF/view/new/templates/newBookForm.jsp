@@ -157,4 +157,4 @@
 <!-- <script -->
 <!-- 	src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script> -->
 
-<script src="<c:url value="/resources/js/index.js"/>"></script>
+<%-- <script src="<c:url value="/resources/js/index.js"/>"></script> --%>

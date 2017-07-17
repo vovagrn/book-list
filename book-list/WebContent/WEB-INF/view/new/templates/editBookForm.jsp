@@ -21,7 +21,7 @@
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="title"
-							placeholder="Название" class="form-control" type="text" value="${book.title}">
+							placeholder="Название" class="form-control form-input" type="text" value="${book.title}">
 					</div>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="page_count"
-							placeholder="Количество страниц" class="form-control" type="text" value="${book.pageCount}">
+							placeholder="Количество страниц" class="form-control form-input" type="text" value="${book.pageCount}">
 					</div>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="publish_year"
-							placeholder="Год издания" class="form-control" type="text" value="${book.publishYear}">
+							placeholder="Год издания" class="form-control form-input" type="text" value="${book.publishYear}">
 					</div>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="isbn"
-							placeholder="ISBN" class="form-control" type="text" value="${book.isbn}">
+							placeholder="ISBN" class="form-control form-input" type="text" value="${book.isbn}">
 					</div>
 				</div>
 			</div>
@@ -105,7 +105,7 @@
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="image"
-							class="form-control" type="file">
+							class="form-control form-input" type="file">
 					</div>
 				</div>
 			</div>
@@ -116,7 +116,7 @@
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="file"
-							class="form-control" type="file">
+							class="form-control form-input" type="file">
 					</div>
 				</div>
 			</div>
@@ -161,4 +161,4 @@
 <!-- <script -->
 <!-- 	src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script> -->
 
-<script src="<c:url value="/resources/js/index.js"/>"></script>
+<%-- <script src="<c:url value="/resources/js/index.js"/>"></script> --%>

@@ -64,6 +64,9 @@
 	padding: 6px 12px;
 	display: table-cell;
 	width: 246px;
+	
+	border: 1px solid #ccc;
+	height: 32px;
 }
 
 .label {
@@ -103,14 +106,9 @@
 	vertical-align: super;
 }
 
-input {
+.form-input {
 	height: 18px;
 	border: 1px solid #ccc;
-}
-
-select {
-	border: 1px solid #ccc;
-	height: 32px;
 }
 
 textarea {

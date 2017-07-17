@@ -47,7 +47,7 @@
 			<a class="mr" href="#"><p class="read">Читать</p></a> <a class="mr"
 				href="#"><p class="download">Скачать</p></a> <a class="mr"
 				href="#editBook${book.id}"><p class="edit">Изменить</p></a> <a
-				class="mr" id="delete" href="delete?id=${book.id}"><p
+				class="mr delete-button" id="delete" href="delete?id=${book.id}"><p
 					class="delete">Удалить</p></a>
 		</div>
 	</c:forEach>
