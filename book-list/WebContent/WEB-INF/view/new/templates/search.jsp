@@ -22,15 +22,13 @@
     <div class="clear"></div>
 
     <div class="search">
-        <form>
+        <form action="list">
             <input type="text" class="search-text" placeholder="Поиск по книгам" />
             <input type="submit" class="button-text" />
 
             <select class="search-select">
                <option>По названию</option>
-               <option>По названию</option>
-               <option>По названию</option>
-               <option>По названию</option>
+               <option>По автору</option>               
             </select>
 
             <input type="submit" class="button" value="Найти" />
