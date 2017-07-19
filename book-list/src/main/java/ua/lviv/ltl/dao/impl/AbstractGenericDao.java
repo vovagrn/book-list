@@ -1,8 +1,6 @@
 package ua.lviv.ltl.dao.impl;
 
 import java.util.List;
-import java.util.Set;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 

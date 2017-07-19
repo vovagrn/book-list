@@ -2,7 +2,7 @@ package ua.lviv.ltl.util;
 
 public class LetterList {
     
-    public char[] getUkrainianLetters(){
+    public static char[] getUkrainianLetters(){
         char[] letters = new char[33];
         letters[0]='А';
         letters[1]='Б';

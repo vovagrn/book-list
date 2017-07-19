@@ -12,11 +12,14 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.IOUtils;
 
+import com.mysql.fabric.ServerMode;
+
 import ua.lviv.ltl.dao.AuthorDao;
 import ua.lviv.ltl.dao.BookDao;
 import ua.lviv.ltl.dao.impl.DaoFactory;
 import ua.lviv.ltl.model.Book;
 import ua.lviv.ltl.model.Language;
+import ua.lviv.ltl.util.LetterList;
 import ua.lviv.ltl.util.UrlHistory;
 
 @WebServlet("/book/*")
@@ -46,9 +49,33 @@ public class BookManagementController extends BaseManagementController {
 				forwardRequest(Page.addBook, req, resp);
 				break;
 			case list:				
-				req.setAttribute("books", bookDao.getAll());				
-				req.setAttribute("languages", Language.values());
-				forwardRequest(Page.listBook, req, resp);
+				req.setAttribute("letters", LetterList.getUkrainianLetters());
+				String letter = req.getParameter("letter");
+				String searchString = req.getParameter("search_string");
+				String searchOption = req.getParameter("search_option");
+				SearchType searchType = null;
+				if(searchOption != null){
+					searchType = SearchType.valueOf(searchOption);
+				}
+				
+				if (searchString != null) {
+					if(searchType == SearchType.TITLE){
+						req.setAttribute("books", bookDao.getBookByTitle(searchString));
+						req.setAttribute("authors", authorDao.getAll());
+						req.setAttribute("languages", Language.values());
+						forwardRequest(Page.listBook, req, resp);
+					}
+				}else if (letter != null) {
+					req.setAttribute("books", bookDao.getBookByLetter(letter));
+					req.setAttribute("authors", authorDao.getAll());
+					req.setAttribute("languages", Language.values());
+					forwardRequest(Page.listBook, req, resp);
+				} else {
+					req.setAttribute("books", bookDao.getAll());
+					req.setAttribute("authors", authorDao.getAll());
+					req.setAttribute("languages", Language.values());
+					forwardRequest(Page.listBook, req, resp);
+				}
 				break;
 			case edit:
 				req.setAttribute("book", bookDao.getById(Long.parseLong(req.getParameter("id"))));
@@ -80,22 +107,22 @@ public class BookManagementController extends BaseManagementController {
 		Part filePart = null;
 		String language = null;
 		String[] authorsId = null;
-		InputStream inputStream = null;		
-		
+		InputStream inputStream = null;
+
 		if (resourcePath != null) {
 			switch (resourcePath) {
 			case add:
 				book = new Book();
 				book.setTitle(req.getParameter("title"));
 				language = req.getParameter("language");
-				if(language != null && !language.equals(" ")){					
+				if (language != null && !language.equals(" ")) {
 					book.setLanguage(Language.valueOf(language));
-				}				
+				}
 				book.setDescription(req.getParameter("description"));
 				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
 				book.setPageCount(Integer.parseInt(req.getParameter("page_count")));
 				book.setPublishYear(Integer.parseInt(req.getParameter("publish_year")));
-				
+
 				filePart = req.getPart("image");
 				if (filePart != null) {
 					inputStream = filePart.getInputStream();
@@ -111,26 +138,27 @@ public class BookManagementController extends BaseManagementController {
 					}
 				}
 				bookDao.add(book);
-				resp.sendRedirect(req.getServletContext().getContextPath()+"/book/list");
-				//req.setAttribute("books", bookDao.getAll());
+				resp.sendRedirect(req.getServletContext().getContextPath() + "/book/list");
+				// req.setAttribute("books", bookDao.getAll());
 				// forwardRequest(Page.listBook, req, resp);
-				//UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
-				//resp.sendRedirect(history.getPrevious());
+				// UrlHistory history = (UrlHistory)
+				// req.getSession().getAttribute("history");
+				// resp.sendRedirect(history.getPrevious());
 				break;
 			case edit:
 				book = bookDao.getById((Long.parseLong(req.getParameter("id"))));
-				book.setTitle(req.getParameter("title"));				
+				book.setTitle(req.getParameter("title"));
 				language = req.getParameter("language");
-				if(language != null && !language.equals(" ")){					
+				if (language != null && !language.equals(" ")) {
 					book.setLanguage(Language.valueOf(language));
-				}		
+				}
 				book.setDescription(req.getParameter("description"));
 				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
 				book.setPageCount(Integer.parseInt(req.getParameter("page_count")));
-				book.setPublishYear(Integer.parseInt(req.getParameter("publish_year")));				
-				
-				filePart = req.getPart("image");				
-				if (filePart != null && filePart.getSize()>0) {
+				book.setPublishYear(Integer.parseInt(req.getParameter("publish_year")));
+
+				filePart = req.getPart("image");
+				if (filePart != null && filePart.getSize() > 0) {
 					inputStream = filePart.getInputStream();
 				}
 				if (inputStream != null) {
@@ -147,9 +175,9 @@ public class BookManagementController extends BaseManagementController {
 					book.getAuthors().clear();
 				}
 				bookDao.update(book);
-				resp.sendRedirect(req.getServletContext().getContextPath()+"/book/list");
-				//req.setAttribute("books", bookDao.getAll());
-				//forwardRequest(Page.listBook, req, resp);
+				resp.sendRedirect(req.getServletContext().getContextPath() + "/book/list");
+				// req.setAttribute("books", bookDao.getAll());
+				// forwardRequest(Page.listBook, req, resp);
 				break;
 			default:
 				break;
