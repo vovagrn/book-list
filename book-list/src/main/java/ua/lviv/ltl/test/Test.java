@@ -30,35 +30,35 @@ public class Test {
 		AuthorDao authorDao = daoFactory.getAythorDao();
 		BookDao bookDao = daoFactory.getBookDao();
 
-		Author aa1 = new Author("Vladimir", "Hrebin", "Igorovich");
-		authorDao.add(aa1);
-
-		Author aa2 = new Author("Ivan", "Ilkiv", "Ivanovich");
-		authorDao.add(aa2);
-
-		Author aa3 = new Author("Vasil", "Kirichuk", "Volodimirovich");
-		authorDao.add(aa3);
-
-		Author aa4 = new Author("Sergey", "Bistrov", "Volodimirovich");
-		authorDao.add(aa4);
-
-		Author aa5 = new Author("Anrij", "Griga", "Stepanovich");
-		authorDao.add(aa5);
-
-		Author aa6 = new Author("Victorij", "Naumec", "Victorivna");
-		authorDao.add(aa6);
-
-		Book bb1 = new Book("Poter", "Fantazy", 377540);
-		bookDao.add(bb1);
-
-		Book bb2 = new Book("Voina", "History", 265657);
-		bookDao.add(bb2);
-
-		Book bb3 = new Book("Orel", "Travel", 738964);
-		bookDao.add(bb3);
-
-		Book bb4 = new Book("Kombat", "War", 597342);
-		bookDao.add(bb4);
+//		Author aa1 = new Author("Vladimir", "Hrebin", "Igorovich");
+//		authorDao.add(aa1);
+//
+//		Author aa2 = new Author("Ivan", "Ilkiv", "Ivanovich");
+//		authorDao.add(aa2);
+//
+//		Author aa3 = new Author("Vasil", "Kirichuk", "Volodimirovich");
+//		authorDao.add(aa3);
+//
+//		Author aa4 = new Author("Sergey", "Bistrov", "Volodimirovich");
+//		authorDao.add(aa4);
+//
+//		Author aa5 = new Author("Anrij", "Griga", "Stepanovich");
+//		authorDao.add(aa5);
+//
+//		Author aa6 = new Author("Victorij", "Naumec", "Victorivna");
+//		authorDao.add(aa6);
+//
+//		Book bb1 = new Book("Poter", "Fantazy", 377540);
+//		bookDao.add(bb1);
+//
+//		Book bb2 = new Book("Voina", "History", 265657);
+//		bookDao.add(bb2);
+//
+//		Book bb3 = new Book("Orel", "Travel", 738964);
+//		bookDao.add(bb3);
+//
+//		Book bb4 = new Book("Kombat", "War", 597342);
+//		bookDao.add(bb4);
 	}
 
 	public static void addRelations() {

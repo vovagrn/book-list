@@ -16,6 +16,8 @@
 
 		<mapping class="ua.lviv.ltl.model.Book" />
 		<mapping class="ua.lviv.ltl.model.Author" />
+		<mapping class="ua.lviv.ltl.model.Genre" />
+		<mapping class="ua.lviv.ltl.model.Publisher" />
 
 	</session-factory>
 </hibernate-configuration>
