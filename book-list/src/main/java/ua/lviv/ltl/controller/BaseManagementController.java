@@ -21,11 +21,11 @@ public abstract class BaseManagementController extends HttpServlet {
 		req.getRequestDispatcher("/WEB-INF/view/new/" + page.name() + ".jsp").forward(req, resp);
 	}
 
-	protected static void forwardRequest(String path, HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-
-		req.getRequestDispatcher(path).forward(req, resp);
-	}
+//	protected static void forwardRequest(String path, HttpServletRequest req, HttpServletResponse resp)
+//			throws ServletException, IOException {
+//
+//		req.getRequestDispatcher(path).forward(req, resp);
+//	}
 
 	protected static ResourcePath checkResourcePath(String pathInfo) {
 		ResourcePath resourcePath = null;

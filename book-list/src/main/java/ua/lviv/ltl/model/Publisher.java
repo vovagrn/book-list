@@ -5,9 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "publisher")
 public class Publisher extends BaseModel implements Serializable {
 
 	private static final long serialVersionUID = -1270400233531979942L;
@@ -27,7 +31,7 @@ public class Publisher extends BaseModel implements Serializable {
     @Column(name = "name")
     private String name;
     
-    @OneToMany(mappedBy = "ublisher", fetch = FetchType.LAZY)    
+    @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY)    
     private Set<Book> books = new HashSet<Book>(0);    
 
     public String getName() {
