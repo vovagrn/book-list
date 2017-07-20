@@ -71,9 +71,7 @@ public class AuthorManagementController extends BaseManagementController {
 			switch (resourcePath) {
 			case add:
 				author = new Author();
-				author.setFirstName(req.getParameter("firstName"));
-				author.setLastName(req.getParameter("lastName"));
-				author.setMiddleName(req.getParameter("middleName"));
+				author.setFullName(req.getParameter("fullName"));				
 				authorDao.add(author);
 				req.setAttribute("authors", authorDao.getAll());
 				// resp.sendRedirect((String)req.getSession().getAttribute("previousPath"));
@@ -83,9 +81,7 @@ public class AuthorManagementController extends BaseManagementController {
 				break;
 			case edit:
 				author = authorDao.getById((Long.parseLong(req.getParameter("id"))));
-				author.setFirstName(req.getParameter("firstName"));
-				author.setLastName(req.getParameter("lastName"));
-				author.setMiddleName(req.getParameter("middleName"));
+				author.setFullName(req.getParameter("fullName"));				
 				authorDao.update(author);
 				System.out.println("<-----POST------" + resourcePath);
 				req.setAttribute("authors", authorDao.getAll());
