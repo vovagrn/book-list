@@ -1,5 +1,8 @@
 package ua.lviv.ltl.model;
 
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -8,43 +11,43 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "author")
-public class Author extends BaseModel {
+public class Author extends BaseModel implements Serializable{
+	
+	private static final long serialVersionUID = 7616756148956455897L;
 
 	public Author() {
-	}
+	}	
 
-	public Author(String firstName, String lastName, String middleName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.middleName = middleName;
-	}
+	@Column(name = "full_name")
+	private String fullName;
+	
+	@Column(name = "birthday")
+	private Calendar birthday;
 
-	public Author(String firstName, String lastName, String middleName, Set<Book> books) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.middleName = middleName;
-		this.books = books;
-	}
-
-	@Column(name = "first_name")
-	private String firstName;
-
-	@Column(name = "last_name")
-	private String lastName;
-
-	@Column(name = "middle_name")
-	private String middleName;
-
-	@ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
 	@Fetch(FetchMode.SUBSELECT)
-	private Set<Book> books;
+	private Set<Book> books = new HashSet<Book>(0);
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public Calendar getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Calendar birthday) {
+		this.birthday = birthday;
+	}
 
 	public Set<Book> getBooks() {
 		return books;
@@ -54,43 +57,13 @@ public class Author extends BaseModel {
 		this.books = books;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getMiddleName() {
-		return middleName;
-	}
-
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
-	@Override
-	public String toString() {
-		return "Author [firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName + ", books="
-				+ ", getId()=" + getId() + "]";
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((middleName == null) ? 0 : middleName.hashCode());
+		int result = super.hashCode();
+		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
+		result = prime * result + ((books == null) ? 0 : books.hashCode());
+		result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
 		return result;
 	}
 
@@ -98,27 +71,28 @@ public class Author extends BaseModel {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Author other = (Author) obj;
-		if (firstName == null) {
-			if (other.firstName != null)
+		if (birthday == null) {
+			if (other.birthday != null)
 				return false;
-		} else if (!firstName.equals(other.firstName))
+		} else if (!birthday.equals(other.birthday))
 			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
+		if (books == null) {
+			if (other.books != null)
 				return false;
-		} else if (!lastName.equals(other.lastName))
+		} else if (!books.equals(other.books))
 			return false;
-		if (middleName == null) {
-			if (other.middleName != null)
+		if (fullName == null) {
+			if (other.fullName != null)
 				return false;
-		} else if (!middleName.equals(other.middleName))
+		} else if (!fullName.equals(other.fullName))
 			return false;
 		return true;
 	}
 
+	
 }
