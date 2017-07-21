@@ -6,11 +6,11 @@
 
 <div class="container">
 
-	<form class="form" action="edit" method="post" id="contact_form" enctype="multipart/form-data" accept-charset="UTF-8">
+	<form class="form" action="${param.tipeForm}" method="post" id="contact_form" enctype="multipart/form-data" accept-charset="UTF-8">
 		<fieldset>
 
 			<!-- Form Name -->
-			<legend>Contact Us Today!</legend>
+			<legend>Contact Us Today!!</legend>
 			 
 			<!-- Text hidden--> 
 			<input type="hidden" name="id" value="${book.id}">
@@ -90,8 +90,7 @@
 										<c:forEach var="bookAuthor" items="${book.authors}" varStatus="status">						
 							<c:if test="${bookAuthor.id == author.id}">checked</c:if>					
 						</c:forEach>>
-									<span class="checkbox-label">${author.firstName}
-										${author.lastName} ${author.middleName}</span><br>
+									<span class="checkbox-label">${author.fullName}</span><br>
 								</div>
 							</c:forEach>
 						</div>

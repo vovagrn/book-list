@@ -13,7 +13,9 @@
 
 	<a href="#x" class="overlay" id="add"></a>
 	<div class="popup">
-		<jsp:include page="newBookForm.jsp" />
+		<jsp:include page="editBookForm.jsp">
+			<jsp:param name="tipeForm" value="add" />
+		</jsp:include>
 		<a class="close" title="Закрыть" href="#close"></a>
 	</div>
 
@@ -22,7 +24,9 @@
 		<a href="#x" class="overlay" id="editBook${book.id}"></a>
 		<div class="popup">
 			<c:set var="book" value="${book}" scope="request"/>
-			<jsp:include page="editBookForm.jsp"/>				
+			<jsp:include page="editBookForm.jsp">
+				<jsp:param name="tipeForm" value="edit"/>
+			</jsp:include>				
 			
 			<a class="close" title="Закрыть" href="#close"></a>
 		</div>
@@ -35,8 +39,7 @@
 				<a class="title" href="<c:url value="/book/view?id=${book.id}"/>">${book.title}</a>
 				<br>
 				<c:forEach var="author" items="${book.authors}" varStatus="status">
-					<span>${author.firstName} ${author.lastName}
-						${author.middleName}</span>
+					<span>${author.fullName}</span>
 				</c:forEach>
 				<p>${book.pageCount} страниц</p>
 				<p>Язык: ${book.language}</p>
