@@ -57,6 +57,9 @@ public class BookManagementController extends BaseManagementController {
 				String searchString = req.getParameter("search_string");
 				String searchOption = req.getParameter("search_option");
 				SearchType searchType = null;
+				if(searchOption != null){
+					searchType = SearchType.valueOf(searchOption);
+				}
 				
 				if(genreId != null){
 					req.setAttribute("books", genreDao.getFullGenreById(Long.parseLong(genreId)).getBooks());
@@ -65,11 +68,7 @@ public class BookManagementController extends BaseManagementController {
 					req.setAttribute("authors", authorDao.getAll());
 					req.setAttribute("languages", Language.values());
 					forwardRequest(Page.listBook, req, resp);
-				} else if(searchOption != null){
-					searchType = SearchType.valueOf(searchOption);
-				}
-				
-				if (searchString != null) {
+				} else if (searchString != null) {
 					if(searchType == SearchType.TITLE){						
 						req.setAttribute("books", bookDao.getBookByTitle(searchString));
 						req.setAttribute("genres", genreDao.getAll());
@@ -198,8 +197,12 @@ public class BookManagementController extends BaseManagementController {
 					book.getAuthors().clear();
 				}
 				bookDao.update(book);
-				resp.sendRedirect(req.getServletContext().getContextPath() + "/book/list");
-				// req.setAttribute("books", bookDao.getAll());
+				
+				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
+				resp.sendRedirect(history.getLast());
+				
+//				resp.sendRedirect(req.getServletContext().getContextPath() + "/book/list");
+				
 				// forwardRequest(Page.listBook, req, resp);
 				break;
 			default:

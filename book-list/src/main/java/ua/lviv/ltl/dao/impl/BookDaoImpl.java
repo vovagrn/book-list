@@ -67,27 +67,4 @@ public class BookDaoImpl extends AbstractGenericDao<Book> implements BookDao {
 		return books;
 	}
 
-	@Override
-	public void delete(Book object) throws DaoException {
-		Session session = null;
-		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			session.beginTransaction();
-			for (Author author : object.getAuthors()) {
-				author.getBooks().remove(object);
-				session.update(author);
-			}
-			// session.update(object);
-			session.delete(object);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if ((session != null) && (session.isOpen()))
-				session.close();
-		}
-	}
-
-	
-
 }

@@ -14,6 +14,10 @@ public class UrlHistory {
 		return history.get(history.size() - 2);
 	}
 	
+	public String getLast(){
+		return history.get(history.size() - 1);
+	}
+	
 	public void add(String point){
 		history.add(point);
 	}
