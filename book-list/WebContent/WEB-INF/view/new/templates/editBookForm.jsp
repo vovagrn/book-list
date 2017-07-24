@@ -58,6 +58,23 @@
 					</div>
 				</div>
 			</div>
+			
+			<!-- Select-->
+			<div class="form-group">
+				<div class="label">Жанр</div>
+				<div class="inputGroupContainer">
+					<div class="input-group">
+						<span class="input-icon"></span> <select name="genre"
+							class="form-select">
+							<option value=" ">Please select genre</option>
+							<c:forEach var="genre" items="${genres}" varStatus="status">
+								<option <c:if test="${genre == book.genre}">selected</c:if>>${genre}</option>
+								
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+			</div>
 
 			<!-- Select-->
 			<div class="form-group">
@@ -69,6 +86,23 @@
 							<option value=" ">Please select language</option>
 							<c:forEach var="language" items="${languages}" varStatus="status">
 								<option <c:if test="${language == book.language}">selected</c:if>>${language}</option>
+								
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Select-->
+			<div class="form-group">
+				<div class="label">Издатель</div>
+				<div class="inputGroupContainer">
+					<div class="input-group">
+						<span class="input-icon"></span> <select name="publisher"
+							class="form-select">
+							<option value=" ">Please select publisher</option>
+							<c:forEach var="publisher" items="${publishers}" varStatus="status">
+								<option <c:if test="${publisher == book.publisher}">selected</c:if>>${publisher}</option>
 								
 							</c:forEach>
 						</select>
