@@ -2,6 +2,8 @@ package ua.lviv.ltl.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -17,6 +19,7 @@ import ua.lviv.ltl.dao.BookDao;
 import ua.lviv.ltl.dao.GenreDao;
 import ua.lviv.ltl.dao.PublisherDao;
 import ua.lviv.ltl.dao.impl.DaoFactory;
+import ua.lviv.ltl.model.Author;
 import ua.lviv.ltl.model.Book;
 import ua.lviv.ltl.model.Language;
 import ua.lviv.ltl.util.LetterList;
@@ -69,13 +72,35 @@ public class BookManagementController extends BaseManagementController {
 					req.setAttribute("languages", Language.values());
 					forwardRequest(Page.listBook, req, resp);
 				} else if (searchString != null) {
-					if(searchType == SearchType.TITLE){						
+					switch (searchType) {
+					case TITLE:
 						req.setAttribute("books", bookDao.getBookByTitle(searchString));
 						req.setAttribute("genres", genreDao.getAll());
 						req.setAttribute("publishers", publisherDao.getAll());
 						req.setAttribute("authors", authorDao.getAll());
 						req.setAttribute("languages", Language.values());
 						forwardRequest(Page.listBook, req, resp);
+						break;
+					case AUTHOR:
+						Set<Book> books = new HashSet<Book>();
+						for(Author author : authorDao.getAuthorByName(searchString)){
+							books.addAll(authorDao.getFullAuthorById(author.getId()).getBooks());
+						}
+						req.setAttribute("books", books);
+						req.setAttribute("genres", genreDao.getAll());
+						req.setAttribute("publishers", publisherDao.getAll());
+						req.setAttribute("authors", authorDao.getAll());
+						req.setAttribute("languages", Language.values());
+						forwardRequest(Page.listBook, req, resp);
+						break;					
+//					}
+//					if(searchType == SearchType.TITLE){						
+//						req.setAttribute("books", bookDao.getBookByTitle(searchString));
+//						req.setAttribute("genres", genreDao.getAll());
+//						req.setAttribute("publishers", publisherDao.getAll());
+//						req.setAttribute("authors", authorDao.getAll());
+//						req.setAttribute("languages", Language.values());
+//						forwardRequest(Page.listBook, req, resp);
 					}
 				}else if (letter != null) {
 					req.setAttribute("books", bookDao.getBookByLetter(letter));
