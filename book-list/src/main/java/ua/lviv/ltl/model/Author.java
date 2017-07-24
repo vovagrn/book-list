@@ -62,7 +62,6 @@ public class Author extends BaseModel implements Serializable{
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
-		result = prime * result + ((books == null) ? 0 : books.hashCode());
 		result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
 		return result;
 	}
@@ -81,11 +80,6 @@ public class Author extends BaseModel implements Serializable{
 				return false;
 		} else if (!birthday.equals(other.birthday))
 			return false;
-		if (books == null) {
-			if (other.books != null)
-				return false;
-		} else if (!books.equals(other.books))
-			return false;
 		if (fullName == null) {
 			if (other.fullName != null)
 				return false;
@@ -94,5 +88,6 @@ public class Author extends BaseModel implements Serializable{
 		return true;
 	}
 
+		
 	
 }

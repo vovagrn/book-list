@@ -68,7 +68,7 @@
 							class="form-select">
 							<option value=" ">Please select genre</option>
 							<c:forEach var="genre" items="${genres}" varStatus="status">
-								<option <c:if test="${genre == book.genre}">selected</c:if>>${genre}</option>
+								<option value="${genre.id}" <c:if test="${genre.name == book.genre.name}">selected</c:if>>${genre.name}</option>
 								
 							</c:forEach>
 						</select>
@@ -102,7 +102,7 @@
 							class="form-select">
 							<option value=" ">Please select publisher</option>
 							<c:forEach var="publisher" items="${publishers}" varStatus="status">
-								<option <c:if test="${publisher == book.publisher}">selected</c:if>>${publisher}</option>
+								<option value="${publisher.id}" <c:if test="${publisher.name == book.publisher.name}">selected</c:if>>${publisher.name}</option>
 								
 							</c:forEach>
 						</select>

@@ -12,10 +12,10 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.IOUtils;
 
-import com.mysql.fabric.ServerMode;
-
 import ua.lviv.ltl.dao.AuthorDao;
 import ua.lviv.ltl.dao.BookDao;
+import ua.lviv.ltl.dao.GenreDao;
+import ua.lviv.ltl.dao.PublisherDao;
 import ua.lviv.ltl.dao.impl.DaoFactory;
 import ua.lviv.ltl.model.Book;
 import ua.lviv.ltl.model.Language;
@@ -35,6 +35,8 @@ public class BookManagementController extends BaseManagementController {
 		DaoFactory daoFactory = DaoFactory.getInstance();
 		BookDao bookDao = daoFactory.getBookDao();
 		AuthorDao authorDao = daoFactory.getAythorDao();
+		GenreDao genreDao = daoFactory.getGenreDao();
+		PublisherDao publisherDao = daoFactory.getPublisherDao();
 
 		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
 
@@ -51,27 +53,42 @@ public class BookManagementController extends BaseManagementController {
 			case list:				
 				req.setAttribute("letters", LetterList.getUkrainianLetters());
 				String letter = req.getParameter("letter");
+				String genreId = req.getParameter("genre");
 				String searchString = req.getParameter("search_string");
 				String searchOption = req.getParameter("search_option");
 				SearchType searchType = null;
-				if(searchOption != null){
+				
+				if(genreId != null){
+					req.setAttribute("books", genreDao.getFullGenreById(Long.parseLong(genreId)).getBooks());
+					req.setAttribute("genres", genreDao.getAll());
+					req.setAttribute("publishers", publisherDao.getAll());
+					req.setAttribute("authors", authorDao.getAll());
+					req.setAttribute("languages", Language.values());
+					forwardRequest(Page.listBook, req, resp);
+				} else if(searchOption != null){
 					searchType = SearchType.valueOf(searchOption);
 				}
 				
 				if (searchString != null) {
-					if(searchType == SearchType.TITLE){
+					if(searchType == SearchType.TITLE){						
 						req.setAttribute("books", bookDao.getBookByTitle(searchString));
+						req.setAttribute("genres", genreDao.getAll());
+						req.setAttribute("publishers", publisherDao.getAll());
 						req.setAttribute("authors", authorDao.getAll());
 						req.setAttribute("languages", Language.values());
 						forwardRequest(Page.listBook, req, resp);
 					}
 				}else if (letter != null) {
 					req.setAttribute("books", bookDao.getBookByLetter(letter));
+					req.setAttribute("genres", genreDao.getAll());
+					req.setAttribute("publishers", publisherDao.getAll());
 					req.setAttribute("authors", authorDao.getAll());
 					req.setAttribute("languages", Language.values());
 					forwardRequest(Page.listBook, req, resp);
 				} else {
 					req.setAttribute("books", bookDao.getAll());
+					req.setAttribute("genres", genreDao.getAll());
+					req.setAttribute("publishers", publisherDao.getAll());
 					req.setAttribute("authors", authorDao.getAll());
 					req.setAttribute("languages", Language.values());
 					forwardRequest(Page.listBook, req, resp);
@@ -100,6 +117,8 @@ public class BookManagementController extends BaseManagementController {
 		DaoFactory daoFactory = DaoFactory.getInstance();
 		BookDao bookDao = daoFactory.getBookDao();
 		AuthorDao authorDao = daoFactory.getAythorDao();
+		GenreDao genreDao = daoFactory.getGenreDao();
+		PublisherDao publisherDao = daoFactory.getPublisherDao();
 
 		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
 
@@ -118,6 +137,8 @@ public class BookManagementController extends BaseManagementController {
 				if (language != null && !language.equals(" ")) {
 					book.setLanguage(Language.valueOf(language));
 				}
+				book.setGenre(genreDao.getById(Long.parseLong(req.getParameter("genre"))));
+				book.setPublisher(publisherDao.getById(Long.parseLong(req.getParameter("publisher"))));
 				book.setDescription(req.getParameter("description"));
 				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
 				book.setPageCount(Integer.parseInt(req.getParameter("page_count")));
@@ -152,6 +173,8 @@ public class BookManagementController extends BaseManagementController {
 				if (language != null && !language.equals(" ")) {
 					book.setLanguage(Language.valueOf(language));
 				}
+				book.setGenre(genreDao.getById(Long.parseLong(req.getParameter("genre"))));
+				book.setPublisher(publisherDao.getById(Long.parseLong(req.getParameter("publisher"))));
 				book.setDescription(req.getParameter("description"));
 				book.setIsbn(Integer.parseInt(req.getParameter("isbn")));
 				book.setPageCount(Integer.parseInt(req.getParameter("page_count")));

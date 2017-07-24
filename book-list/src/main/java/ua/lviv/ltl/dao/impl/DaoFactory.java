@@ -2,6 +2,8 @@ package ua.lviv.ltl.dao.impl;
 
 import ua.lviv.ltl.dao.AuthorDao;
 import ua.lviv.ltl.dao.BookDao;
+import ua.lviv.ltl.dao.GenreDao;
+import ua.lviv.ltl.dao.PublisherDao;
 
 public class DaoFactory {
 
@@ -28,6 +30,14 @@ public class DaoFactory {
 	
 	public AuthorDao getAythorDao(){
 		return new AuthorDaoImpl();
+	}
+	
+	public GenreDao getGenreDao(){
+		return new GenreDaoImpl();
+	}
+	
+	public PublisherDao getPublisherDao(){
+		return new PublisherDaoImpl();
 	}
 
 }
