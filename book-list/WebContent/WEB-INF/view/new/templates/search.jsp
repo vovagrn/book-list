@@ -23,12 +23,13 @@
 
     <div class="search">
         <form action="list">
-            <input type="text" class="search-text" name="search_string" placeholder="Поиск по книгам" />
+            <input type="text" class="search-text" name="search_string" value="${searchString}" placeholder="Поиск по книгам" />
             <input type="submit" class="button-text" />
 
             <select class="search-select" name="search_option">
-               <option value="TITLE">По названию</option>
-               <option value="AUTHOR">По автору</option>               
+            	<c:forEach var="searchType" items="${searchTypes}">
+            		<option <c:if test="${searchType == searchOption}">selected</c:if>>${searchType}</option>
+            	</c:forEach>                              
             </select>
 
             <input type="submit" class="button" value="Найти" />

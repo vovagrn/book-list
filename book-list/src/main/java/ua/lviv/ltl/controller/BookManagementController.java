@@ -45,89 +45,63 @@ public class BookManagementController extends BaseManagementController {
 
 		if (resourcePath != null) {
 			switch (resourcePath) {
-			case view:
-				req.setAttribute("book", bookDao.getById(Long.parseLong(req.getParameter("id"))));
-				forwardRequest(Page.viewBook, req, resp);
-				break;
-			case add:
-				req.setAttribute("authors", authorDao.getAll());
-				forwardRequest(Page.addBook, req, resp);
-				break;
-			case list:				
+
+			case list:
 				req.setAttribute("letters", LetterList.getUkrainianLetters());
+				req.setAttribute("searchTypes", SearchType.values());
+				req.setAttribute("languages", Language.values());
+				req.setAttribute("genres", genreDao.getAll());
+				req.setAttribute("publishers", publisherDao.getAll());
+				req.setAttribute("authors", authorDao.getAll());
+
 				String letter = req.getParameter("letter");
 				String genreId = req.getParameter("genre");
 				String searchString = req.getParameter("search_string");
+				if (searchString != null) {
+					req.setAttribute("searchString", searchString);
+				}
 				String searchOption = req.getParameter("search_option");
+				if (searchOption != null) {
+					req.getSession().setAttribute("searchOption", searchOption);
+				}
+				
 				SearchType searchType = null;
-				if(searchOption != null){
+				if (searchOption != null) {
 					searchType = SearchType.valueOf(searchOption);
 				}
 				
-				if(genreId != null){
+				if (genreId != null) {
 					req.setAttribute("books", genreDao.getFullGenreById(Long.parseLong(genreId)).getBooks());
-					req.setAttribute("genres", genreDao.getAll());
-					req.setAttribute("publishers", publisherDao.getAll());
-					req.setAttribute("authors", authorDao.getAll());
-					req.setAttribute("languages", Language.values());
 					forwardRequest(Page.listBook, req, resp);
 				} else if (searchString != null) {
 					switch (searchType) {
-					case TITLE:
+					case title:
 						req.setAttribute("books", bookDao.getBookByTitle(searchString));
-						req.setAttribute("genres", genreDao.getAll());
-						req.setAttribute("publishers", publisherDao.getAll());
-						req.setAttribute("authors", authorDao.getAll());
-						req.setAttribute("languages", Language.values());
 						forwardRequest(Page.listBook, req, resp);
 						break;
-					case AUTHOR:
+					case author:
 						Set<Book> books = new HashSet<Book>();
-						for(Author author : authorDao.getAuthorByName(searchString)){
+						for (Author author : authorDao.getAuthorByName(searchString)) {
 							books.addAll(authorDao.getFullAuthorById(author.getId()).getBooks());
 						}
 						req.setAttribute("books", books);
-						req.setAttribute("genres", genreDao.getAll());
-						req.setAttribute("publishers", publisherDao.getAll());
-						req.setAttribute("authors", authorDao.getAll());
-						req.setAttribute("languages", Language.values());
 						forwardRequest(Page.listBook, req, resp);
-						break;					
-//					}
-//					if(searchType == SearchType.TITLE){						
-//						req.setAttribute("books", bookDao.getBookByTitle(searchString));
-//						req.setAttribute("genres", genreDao.getAll());
-//						req.setAttribute("publishers", publisherDao.getAll());
-//						req.setAttribute("authors", authorDao.getAll());
-//						req.setAttribute("languages", Language.values());
-//						forwardRequest(Page.listBook, req, resp);
+						break;
 					}
-				}else if (letter != null) {
+				} else if (letter != null) {
 					req.setAttribute("books", bookDao.getBookByLetter(letter));
-					req.setAttribute("genres", genreDao.getAll());
-					req.setAttribute("publishers", publisherDao.getAll());
-					req.setAttribute("authors", authorDao.getAll());
-					req.setAttribute("languages", Language.values());
 					forwardRequest(Page.listBook, req, resp);
 				} else {
 					req.setAttribute("books", bookDao.getAll());
-					req.setAttribute("genres", genreDao.getAll());
-					req.setAttribute("publishers", publisherDao.getAll());
-					req.setAttribute("authors", authorDao.getAll());
-					req.setAttribute("languages", Language.values());
 					forwardRequest(Page.listBook, req, resp);
 				}
 				break;
-			case edit:
-				req.setAttribute("book", bookDao.getById(Long.parseLong(req.getParameter("id"))));
-				req.setAttribute("authors", authorDao.getAll());
-				forwardRequest(Page.editBook, req, resp);
-				break;
+
 			case delete:
 				bookDao.delete(bookDao.getById(Long.parseLong(req.getParameter("id"))));
-				req.setAttribute("books", bookDao.getAll());
 				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
 				resp.sendRedirect(history.getPrevious());
+				// req.setAttribute("books", bookDao.getAll());
 				// forwardRequest(Page.listBook, req, resp);
 				break;
 			default:
@@ -222,12 +196,12 @@ public class BookManagementController extends BaseManagementController {
 					book.getAuthors().clear();
 				}
 				bookDao.update(book);
-				
+
 				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
 				resp.sendRedirect(history.getLast());
-				
-//				resp.sendRedirect(req.getServletContext().getContextPath() + "/book/list");
-				
+
+				// resp.sendRedirect(req.getServletContext().getContextPath() +
+				// "/book/list");
 				// forwardRequest(Page.listBook, req, resp);
 				break;
 			default:
