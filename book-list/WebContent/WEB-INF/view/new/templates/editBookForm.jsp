@@ -10,7 +10,7 @@
 		<fieldset>
 
 			<!-- Form Name -->
-			<legend>Contact Us Today!!</legend>
+			<legend>Contact Us Today!!!</legend>
 			 
 			<!-- Text hidden--> 
 			<input type="hidden" name="id" value="${book.id}">
