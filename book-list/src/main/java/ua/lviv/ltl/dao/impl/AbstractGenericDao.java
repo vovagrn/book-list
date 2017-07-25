@@ -11,6 +11,7 @@ import ua.lviv.ltl.util.HibernateUtil;
 
 public abstract class AbstractGenericDao<E extends BaseModel> implements GenericDao<E> {
 
+	@SuppressWarnings("unchecked")
 	protected E getByIdGeneric(Class<E> clazz, Long id) throws DaoException {
 		E result = null;
 		Session session = null;
@@ -28,6 +29,7 @@ public abstract class AbstractGenericDao<E extends BaseModel> implements Generic
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	protected List<E> getAllGeneric(Class<E> clazz) throws DaoException {
 		List<E> result = null;
 		Session session = null;

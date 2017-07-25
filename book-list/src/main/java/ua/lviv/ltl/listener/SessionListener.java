@@ -4,8 +4,6 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import ua.lviv.ltl.util.UrlHistory;
-
 @WebListener
 public class SessionListener implements HttpSessionListener {
 

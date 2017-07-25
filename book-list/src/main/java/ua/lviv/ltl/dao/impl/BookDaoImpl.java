@@ -9,7 +9,6 @@ import org.hibernate.criterion.Restrictions;
 
 import ua.lviv.ltl.dao.BookDao;
 import ua.lviv.ltl.dao.DaoException;
-import ua.lviv.ltl.model.Author;
 import ua.lviv.ltl.model.Book;
 import ua.lviv.ltl.util.HibernateUtil;
 
@@ -25,6 +24,7 @@ public class BookDaoImpl extends AbstractGenericDao<Book> implements BookDao {
 		return super.getAllGeneric(Book.class);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Book> getBookByTitle(String title) {
 		Session session = null;
@@ -46,6 +46,7 @@ public class BookDaoImpl extends AbstractGenericDao<Book> implements BookDao {
 		return books;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Book> getBookByLetter(String letter) {
 		Session session = null;

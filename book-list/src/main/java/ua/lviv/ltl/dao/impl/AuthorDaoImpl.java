@@ -24,6 +24,7 @@ public class AuthorDaoImpl extends AbstractGenericDao<Author> implements AuthorD
 		return super.getAllGeneric(Author.class);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Author> getAuthorByName(String name) {
 		Session session = null;
 		List<Author> author = null;
