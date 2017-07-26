@@ -83,9 +83,7 @@ public class AuthorManagementController extends BaseManagementController {
 			case add:
 				author = new Author();
 				author.setFullName(req.getParameter("fullName"));				
-				authorDao.add(author);
-				req.setAttribute("authors", authorDao.getAll());
-				// resp.sendRedirect((String)req.getSession().getAttribute("previousPath"));
+				authorDao.add(author);	
 				//forwardRequest("/author/list", req, resp);
 				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
 				resp.sendRedirect(history.getPrevious());
@@ -94,9 +92,9 @@ public class AuthorManagementController extends BaseManagementController {
 				author = authorDao.getById((Long.parseLong(req.getParameter("id"))));
 				author.setFullName(req.getParameter("fullName"));				
 				authorDao.update(author);
-				System.out.println("<-----POST------" + resourcePath);
-				req.setAttribute("authors", authorDao.getAll());
-				forwardRequest(Page.listAuthor, req, resp);
+				//forwardRequest(Page.listAuthor, req, resp);
+				UrlHistory history2 = (UrlHistory) req.getSession().getAttribute("history");
+				resp.sendRedirect(history2.getLast());
 				break;
 			default:
 				break;

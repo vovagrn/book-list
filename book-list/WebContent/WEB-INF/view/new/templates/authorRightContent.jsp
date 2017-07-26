@@ -20,6 +20,28 @@
 		</jsp:include>
 		<a class="close" title="Закрыть" href="#close"></a>
 	</div>
+	
+	<c:forEach var="author" items="${authors}">
+	
+	<a href="#x" class="overlay" id="editAuthor${author.id}"></a>
+		<div class="popup">
+			<c:set var="author" value="${author}" scope="request"/>
+			<jsp:include page="authorForm.jsp"/>				
+			<a class="close" title="Закрыть" href="#close"></a>
+		</div>
+		
+		<div class="box-sh">
+		<h1>${author.fullName}(${author.birthday})</h1>		
+		<a class="mr" href="#editAuthor${author.id}"><p class="edit">Изменить</p></a> 
+		<a class="mr delete-button" id="delete" href="delete?id=${author.id}"><p class="delete">Удалить</p></a>
+	</div>
+		
+	</c:forEach>
+
+
+
+
+
 
 	<c:forEach var="book" items="${books}" varStatus="status">
 
@@ -48,11 +70,10 @@
 				<p>ISBN: ${book.isbn}</p>
 			</div>
 			<div class="clear"></div>
-			<a class="mr" href="#"><p class="read">Читать</p></a> <a class="mr"
-				href="#"><p class="download">Скачать</p></a> <a class="mr"
-				href="#editBook${book.id}"><p class="edit">Изменить</p></a> <a
-				class="mr delete-button" id="delete" href="delete?id=${book.id}"><p
-					class="delete">Удалить</p></a>
+			<a class="mr" href="#"><p class="read">Читать</p></a> 
+			<a class="mr" href="#"><p class="download">Скачать</p></a> 
+			<a class="mr" href="#editBook${book.id}"><p class="edit">Изменить</p></a> 
+			<a class="mr delete-button" id="delete" href="delete?id=${book.id}"><p class="delete">Удалить</p></a>
 		</div>
 	</c:forEach>
 
