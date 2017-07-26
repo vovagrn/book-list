@@ -72,6 +72,7 @@ public class AuthorManagementController extends BaseManagementController {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
 		DaoFactory daoFactory = DaoFactory.getInstance();
 		AuthorDao authorDao = daoFactory.getAythorDao();
 
@@ -85,16 +86,15 @@ public class AuthorManagementController extends BaseManagementController {
 				author.setFullName(req.getParameter("fullName"));				
 				authorDao.add(author);	
 				//forwardRequest("/author/list", req, resp);
-				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
+				
 				resp.sendRedirect(history.getPrevious());
 				break;
 			case edit:
 				author = authorDao.getById((Long.parseLong(req.getParameter("id"))));
 				author.setFullName(req.getParameter("fullName"));				
 				authorDao.update(author);
-				//forwardRequest(Page.listAuthor, req, resp);
-				UrlHistory history2 = (UrlHistory) req.getSession().getAttribute("history");
-				resp.sendRedirect(history2.getLast());
+				//forwardRequest(Page.listAuthor, req, resp);				
+				resp.sendRedirect(history.getLast());
 				break;
 			default:
 				break;
