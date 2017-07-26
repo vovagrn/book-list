@@ -6,15 +6,16 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="right-content">
+
+	<jsp:include page="buttonsPanel.jsp" />
+	
 	<div class="box-sh">
-		<h1>Найдено ${fn:length(books)} книги</h1>
-		<a href="#add"><p>Додати книгу</p></a>
-		<a href="#add"><p>Додати автора, видавництво, жанр</p></a>
+		<h1>Знайдено книг: ${fn:length(books)}</h1>		
 	</div>
 
 	<a href="#x" class="overlay" id="add"></a>
 	<div class="popup">
-		<jsp:include page="editBookForm.jsp">
+		<jsp:include page="bookForm.jsp">
 			<jsp:param name="tipeForm" value="add" />
 		</jsp:include>
 		<a class="close" title="Закрыть" href="#close"></a>
@@ -25,7 +26,7 @@
 		<a href="#x" class="overlay" id="editBook${book.id}"></a>
 		<div class="popup">
 			<c:set var="book" value="${book}" scope="request"/>
-			<jsp:include page="editBookForm.jsp">
+			<jsp:include page="bookForm.jsp">
 				<jsp:param name="tipeForm" value="edit"/>
 			</jsp:include>				
 			

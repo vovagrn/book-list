@@ -7,8 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.lviv.ltl.dao.AuthorDao;
+import ua.lviv.ltl.dao.GenreDao;
+import ua.lviv.ltl.dao.PublisherDao;
 import ua.lviv.ltl.dao.impl.DaoFactory;
 import ua.lviv.ltl.model.Author;
+import ua.lviv.ltl.model.Language;
+import ua.lviv.ltl.util.LetterList;
 import ua.lviv.ltl.util.UrlHistory;
 
 @WebServlet("/author/*")
@@ -22,10 +26,11 @@ public class AuthorManagementController extends BaseManagementController {
 		super.doGet(req, resp);
 		DaoFactory daoFactory = DaoFactory.getInstance();
 		AuthorDao authorDao = daoFactory.getAythorDao();
+		GenreDao genreDao = daoFactory.getGenreDao();
+		PublisherDao publisherDao = daoFactory.getPublisherDao();
 
 		ResourcePath resourcePath = checkResourcePath(req.getPathInfo());
-
-		System.out.println("<-----------" + resourcePath);
+		
 		if (resourcePath != null) {
 			switch (resourcePath) {
 			case view:
@@ -38,7 +43,13 @@ public class AuthorManagementController extends BaseManagementController {
 				forwardRequest(Page.addAuthor, req, resp);
 				break;
 			case list:
-				req.setAttribute("authors", authorDao.getAll());
+				req.setAttribute("letters", LetterList.getUkrainianLetters());
+				req.setAttribute("searchTypes", SearchType.values());
+				req.setAttribute("languages", Language.values());
+				req.setAttribute("genres", genreDao.getAll());
+				req.setAttribute("publishers", publisherDao.getAll());
+				req.setAttribute("authors", authorDao.getAll());				
+				
 				forwardRequest(Page.listAuthor, req, resp);
 				break;
 			case edit:

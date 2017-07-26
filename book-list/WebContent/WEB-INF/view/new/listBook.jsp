@@ -35,7 +35,7 @@ $(document).ready(function() {
 		
 		<div class="content">
 			<jsp:include page="templates/left_menu.jsp" />
-			<jsp:include page="templates/right-content.jsp" />
+			<jsp:include page="templates/bookRightContent.jsp" />
 		</div>
 	
 	<jsp:include page="templates/footer.jsp" />
