@@ -8,7 +8,8 @@
 <div class="right-content">
 	<div class="box-sh">
 		<h1>Найдено ${fn:length(books)} книги</h1>
-		<a href="#add"><p>Добавить</p></a>
+		<a href="#add"><p>Додати книгу</p></a>
+		<a href="#add"><p>Додати автора, видавництво, жанр</p></a>
 	</div>
 
 	<a href="#x" class="overlay" id="add"></a>
