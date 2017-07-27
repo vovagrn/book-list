@@ -10,7 +10,7 @@
 	<jsp:include page="buttonsPanel.jsp" />
 
 	<div class="box-sh">
-		<form class="form" action="add" method="post" id="contact_form"
+		<form class="form-input-data" action="add" method="post" id="contact_form"
 			accept-charset="UTF-8">
 			<fieldset>
 

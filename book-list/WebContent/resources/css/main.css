@@ -173,3 +173,8 @@ background: #CEEEFB;
  
  .box-buttons {padding-right: 40px; padding-left: 10px; overflow: hidden; }
  .box-buttons a {margin-top: 10px; float: left; background: #d5c39d; padding: 10px 15px 10px 15px; border-radius: 5px; margin-left: 6px; font-size: 14px; color: #fff; text-decoration: none;}
+ 
+ .form-input-data{padding: 19px;}
+ 	.form-input-data .label{text-align: right; width: 25%;	font-weight: 700; float: left; padding-right: 15px; padding-left: 15px; padding-top: 5px;}
+ 
+ 
