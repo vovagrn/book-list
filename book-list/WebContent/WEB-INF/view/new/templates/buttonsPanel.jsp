@@ -6,7 +6,7 @@
 
 <div class="box-buttons">		
 		<a href="#add"><p>Додати книгу</p></a>
-		<a href="#add"><p>Додати жанр</p></a>
+		<a href="<c:url value="/genre/list"/>"><p>Додати жанр</p></a>
 		<a href="<c:url value="/author/list"/>"><p>Додати автора</p></a>		
 		<a href="#add"><p>Додати видавництво</p></a>
 	</div>

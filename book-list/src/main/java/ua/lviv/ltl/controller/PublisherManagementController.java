@@ -16,8 +16,8 @@ import ua.lviv.ltl.model.Language;
 import ua.lviv.ltl.util.LetterList;
 import ua.lviv.ltl.util.UrlHistory;
 
-@WebServlet("/genre/*")
-public class GenreManagementController extends BaseManagementController {
+@WebServlet("/publisher/*")
+public class PublisherManagementController extends BaseManagementController {
 	private static final long serialVersionUID = 1L;
        
 	@Override
@@ -50,7 +50,7 @@ public class GenreManagementController extends BaseManagementController {
 				forwardRequest(Page.listGenre, req, resp);
 				break;			
 			case delete:
-				genreDao.delete(genreDao.getById(Long.parseLong(req.getParameter("id"))));				
+				publisherDao.delete(publisherDao.getById(Long.parseLong(req.getParameter("id"))));				
 				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
 				resp.sendRedirect(history.getPrevious());
 				//forwardRequest(Page.listAuthor, req, resp);
@@ -92,5 +92,4 @@ public class GenreManagementController extends BaseManagementController {
 			}
 		}
 	}
-
 }

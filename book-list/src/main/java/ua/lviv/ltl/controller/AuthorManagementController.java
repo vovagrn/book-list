@@ -23,7 +23,8 @@ public class AuthorManagementController extends BaseManagementController {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		super.doGet(req, resp);
+		super.doGet(req, resp);		
+		UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
 		DaoFactory daoFactory = DaoFactory.getInstance();
 		AuthorDao authorDao = daoFactory.getAythorDao();
 		GenreDao genreDao = daoFactory.getGenreDao();
@@ -50,9 +51,8 @@ public class AuthorManagementController extends BaseManagementController {
 				forwardRequest(Page.listAuthor, req, resp);
 				break;			
 			case delete:
-				authorDao.delete(authorDao.getById(Long.parseLong(req.getParameter("id"))));
-				req.setAttribute("authors", authorDao.getAll());
-				UrlHistory history = (UrlHistory) req.getSession().getAttribute("history");
+				authorDao.delete(authorDao.getById(Long.parseLong(req.getParameter("id"))));				
+				
 				resp.sendRedirect(history.getPrevious());
 				//forwardRequest(Page.listAuthor, req, resp);
 				break;
