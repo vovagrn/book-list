@@ -176,5 +176,16 @@ background: #CEEEFB;
  
  .form-input-data{padding: 19px;}
  	.form-input-data .label{text-align: right; width: 25%;	font-weight: 700; float: left; padding-right: 15px; padding-left: 15px; padding-top: 5px;}
+ 	
+ 	
+.content-list-item {padding-right: 40px; overflow: hidden; }
+.content-list-item:HOVER {background: #e9f6fc;}
+	.content-list-item h1 {float: left; color: #7f7f7f; font-size: 30px; margin-left: 39px; margin-top: 12px;margin-bottom: 12px;}
+	.content-list-item a {margin-top: 25px; float: right; background: #d5c39d; padding: 10px 15px 10px 15px; border-radius: 5px; margin-left: 6px; font-size: 14px; color: #fff; text-decoration: none;}
+ 
+ 	.content-list-item .mr { margin-top: 12px; width:85px; border-radius: 5px; background: #8aa1a7; padding: 10px 17px 10px 17px; margin-left: 19px; text-decoration: none; color: #fff; font-size: 14px;}
+ 	.content-list-item .delete-button {margin-top: 12px; border-radius: 5px; background: #d5564d; width:85px; padding: 10px 17px 10px 17px; margin-left: 19px; text-decoration: none; color: #fff; font-size: 14px;}
+ 	.content-list-item .edit {font-size: 14px; text-align: left; background:url("../images/edit.png") no-repeat 0% 50%; padding-left: 25px;}
+ 	.content-list-item .delete {font-size: 14px; text-align: left; background:url("../images/recycle.png") no-repeat 0% 50%; padding-left: 25px;}
  
  

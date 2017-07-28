@@ -38,24 +38,17 @@ public class AuthorManagementController extends BaseManagementController {
 				req.setAttribute("books", author.getBooks());
 				req.setAttribute("authors", authorDao.getAll());
 				forwardRequest(Page.listBook, req, resp);
-				break;
-			case add:
-				forwardRequest(Page.addAuthor, req, resp);
-				break;
+				break;			
 			case list:
 				req.setAttribute("letters", LetterList.getUkrainianLetters());
 				req.setAttribute("searchTypes", SearchType.values());
 				req.setAttribute("languages", Language.values());
 				req.setAttribute("genres", genreDao.getAll());
 				req.setAttribute("publishers", publisherDao.getAll());
-				req.setAttribute("authors", authorDao.getAll());				
+				req.setAttribute("authors", authorDao.getAll());			
 				
 				forwardRequest(Page.listAuthor, req, resp);
-				break;
-			case edit:
-				req.setAttribute("author", authorDao.getById(Long.parseLong(req.getParameter("id"))));
-				forwardRequest(Page.editAuthor, req, resp);
-				break;
+				break;			
 			case delete:
 				authorDao.delete(authorDao.getById(Long.parseLong(req.getParameter("id"))));
 				req.setAttribute("authors", authorDao.getAll());
@@ -67,7 +60,6 @@ public class AuthorManagementController extends BaseManagementController {
 				break;
 			}
 		}
-
 	}
 
 	@Override
@@ -87,7 +79,7 @@ public class AuthorManagementController extends BaseManagementController {
 				authorDao.add(author);	
 				//forwardRequest("/author/list", req, resp);
 				
-				resp.sendRedirect(history.getPrevious());
+				resp.sendRedirect(history.getLast());
 				break;
 			case edit:
 				author = authorDao.getById((Long.parseLong(req.getParameter("id"))));
@@ -101,5 +93,4 @@ public class AuthorManagementController extends BaseManagementController {
 			}
 		}
 	}
-
 }

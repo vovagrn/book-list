@@ -73,11 +73,10 @@
 			<a class="close" title="Закрыть" href="#close"></a>
 		</div>
 
-		<div class="box-sh">
-			<h1>${author.fullName}(${author.birthday})</h1>
+		<div class="content-list-item">
+			<h1>${author.fullName}(${author.birthday})</h1>			
+			<a class="mr delete-button" id="delete" href="delete?id=${author.id}"><p class="delete">Удалить</p></a>
 			<a class="mr" href="#editAuthor${author.id}"><p class="edit">Изменить</p></a>
-			<a class="mr delete-button" id="delete" href="delete?id=${author.id}"><p
-					class="delete">Удалить</p></a>
 		</div>
 
 	</c:forEach>
