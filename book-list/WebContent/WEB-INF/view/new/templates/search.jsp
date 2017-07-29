@@ -4,6 +4,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<fmt:setBundle basename="/message/message"/>
+
 <div class="logo">
         <a href="#"><img src="<c:url value="/resources/images/logo.png"/>" width="211" height="46" alt="" /></a>
     </div>
@@ -23,18 +25,18 @@
 
     <div class="search">
         <form action="list">
-            <input type="text" class="search-text" name="search_string" value="${searchString}" placeholder="Поиск по книгам" />
+            <input type="text" class="search-text" name="search_string" value="${searchString}" placeholder="<fmt:message key="list.searchPlaceholder"/>" />
             <input type="submit" class="button-text" />
 
             <select class="search-select" name="search_option">
             	<c:forEach var="searchType" items="${searchTypes}">
-            		<option <c:if test="${searchType == searchOption}">selected</c:if>>${searchType}</option>
+            		<option <c:if test="${searchType == searchOption}">selected</c:if> value="${searchType}"><fmt:message key="list.searchType.${searchType}"/></option>
             	</c:forEach>                              
             </select>
-
-            <input type="submit" class="button" value="Найти" />
+            <input type="submit" class="button" value="<fmt:message key="list.searchButton"/>" />
         </form>
     </div>
+    
     <div class="clear"></div>
 
     <div class="nav">
