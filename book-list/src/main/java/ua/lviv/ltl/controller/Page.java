@@ -4,6 +4,7 @@ public enum Page {
 	
 	viewAuthor, listAuthor, addAuthor, editAuthor,
 	viewBook, listBook, addBook, editBook,
-	listGenre
+	listGenre,
+	listPublisher
 
 }

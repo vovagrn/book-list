@@ -16,27 +16,15 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-					<div class="label">Повне ім'я</div>
+					<div class="label">Назва видавництва</div>
 					<div class="inputGroupContainer">
 						<div class="input-group">
-							<span class="input-icon"></span> <input name="fullName"
-								placeholder="Название" class="form-control form-input"
-								type="text"">
+							<span class="input-icon"></span> <input name="name"
+								placeholder="Назва видавництва" class="form-control form-input"
+								type="text">
 						</div>
 					</div>
-				</div>
-
-				<!-- Text input-->
-				<div class="form-group">
-					<div class="label">Год издания</div>
-					<div class="inputGroupContainer">
-						<div class="input-group">
-							<span class="input-icon"></span> <input name="publish_year"
-								placeholder="Год издания" class="form-control form-input"
-								type="text"">
-						</div>
-					</div>
-				</div>
+				</div>				
 
 				<!-- Button -->
 				<div class="form-group">
@@ -53,22 +41,22 @@
 	</div>
 
 	<div class="box-sh">
-		<h1>Знайдено авторів: ${fn:length(authors)}</h1>
-	</div>
+		<h1>Знайдено видавництв: ${fn:length(publishers)}</h1>
+	</div>	
 
-	<c:forEach var="author" items="${authors}">
+	<c:forEach var="publisher" items="${publishers}">
 
-		<a href="#x" class="overlay" id="editAuthor${author.id}"></a>
+		<a href="#x" class="overlay" id="editPublisher${publisher.id}"></a>
 		<div class="popup">
-			<c:set var="author" value="${author}" scope="request" />
-			<jsp:include page="authorForm.jsp" />
+			<c:set var="publisher" value="${publisher}" scope="request" />
+			<jsp:include page="publisherForm.jsp" />
 			<a class="close" title="Закрыть" href="#close"></a>
 		</div>
 
 		<div class="content-list-item">
-			<h1>${author.fullName}(${author.birthday})</h1>			
-			<a class="mr delete-button" id="delete" href="delete?id=${author.id}"><p class="delete">Удалить</p></a>
-			<a class="mr" href="#editAuthor${author.id}"><p class="edit">Изменить</p></a>
+			<h1>${publisher.name}</h1>			
+			<a class="mr delete-button" id="delete" href="delete?id=${publisher.id}"><p class="delete">Удалить</p></a>
+			<a class="mr" href="#editPublisher${publisher.id}"><p class="edit">Изменить</p></a>
 		</div>
 
 	</c:forEach>

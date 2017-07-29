@@ -42,15 +42,7 @@
 
 	<div class="box-sh">
 		<h1>Знайдено жанрів: ${fn:length(genres)}</h1>
-	</div>
-
-	<a href="#x" class="overlay" id="add"></a>
-	<div class="popup">
-		<jsp:include page="bookForm.jsp">
-			<jsp:param name="tipeForm" value="add" />
-		</jsp:include>
-		<a class="close" title="Закрыть" href="#close"></a>
-	</div>
+	</div>	
 
 	<c:forEach var="genre" items="${genres}">
 

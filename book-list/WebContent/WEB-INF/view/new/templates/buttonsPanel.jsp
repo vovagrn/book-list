@@ -5,8 +5,16 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="box-buttons">		
-		<a href="#add"><p>Додати книгу</p></a>
-		<a href="<c:url value="/genre/list"/>"><p>Додати жанр</p></a>
-		<a href="<c:url value="/author/list"/>"><p>Додати автора</p></a>		
-		<a href="#add"><p>Додати видавництво</p></a>
+		<a href="#add">Додати книгу</a>
+		<a href="<c:url value="/genre/list"/>">Додати жанр</a>
+		<a href="<c:url value="/author/list"/>">Додати автора</a>		
+		<a href="<c:url value="/publisher/list"/>">Додати видавництво</a>
+	</div>
+	
+	<a href="#x" class="overlay" id="add"></a>
+	<div class="popup">
+		<jsp:include page="bookForm.jsp">
+			<jsp:param name="tipeForm" value="add" />
+		</jsp:include>
+		<a class="close" title="Закрыть" href="#close"></a>
 	</div>
