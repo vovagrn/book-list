@@ -4,6 +4,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<fmt:setBundle basename="/message/message"/>
+
 <div class="container">
 
 	<form class="form" action="${param.tipeForm}" method="post" id="contact_form" enctype="multipart/form-data" accept-charset="UTF-8">
@@ -17,7 +19,7 @@
 
 			<!-- Text input-->
 			<div class="form-group">
-				<div class="label">Название</div>
+				<div class="label"><fmt:message key="bookForm.label.title"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="title"
@@ -28,7 +30,7 @@
 
 			<!-- Text input-->
 			<div class="form-group">
-				<div class="label">Количество страниц</div>
+				<div class="label"><fmt:message key="bookForm.label.pageCount"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="page_count"
@@ -39,7 +41,7 @@
 
 			<!-- Text input-->
 			<div class="form-group">
-				<div class="label">Год издания</div>
+				<div class="label"><fmt:message key="bookForm.label.publishYear"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="publish_year"
@@ -50,7 +52,7 @@
 
 			<!-- Text input-->
 			<div class="form-group">
-				<div class="label">ISBN</div>
+				<div class="label"><fmt:message key="bookForm.label.isbn"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="isbn"
@@ -61,7 +63,7 @@
 			
 			<!-- Select-->
 			<div class="form-group">
-				<div class="label">Жанр</div>
+				<div class="label"><fmt:message key="bookForm.label.genre"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <select name="genre"
@@ -78,7 +80,7 @@
 
 			<!-- Select-->
 			<div class="form-group">
-				<div class="label">Язык</div>
+				<div class="label"><fmt:message key="bookForm.label.language"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <select name="language"
@@ -95,7 +97,7 @@
 			
 			<!-- Select-->
 			<div class="form-group">
-				<div class="label">Издатель</div>
+				<div class="label"><fmt:message key="bookForm.label.publisher"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <select name="publisher"
@@ -112,7 +114,7 @@
 
 			<!-- Box input-->
 			<div class="form-group">
-				<div class="label">Автор</div>
+				<div class="label"><fmt:message key="bookForm.label.author"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span>
@@ -157,7 +159,7 @@
 			<!-- Text area -->
 
 			<div class="form-group">
-				<div class="label">Description</div>
+				<div class="label"><fmt:message key="bookForm.label.description"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span>
