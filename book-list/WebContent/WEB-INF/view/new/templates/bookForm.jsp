@@ -23,7 +23,7 @@
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="title"
-							placeholder="Название" class="form-control form-input" type="text" value="${book.title}">
+							placeholder="<fmt:message key="bookForm.input.title.placeholder"/>" class="form-control form-input" type="text" value="${book.title}">
 					</div>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="page_count"
-							placeholder="Количество страниц" class="form-control form-input" type="text" value="${book.pageCount}">
+							placeholder="<fmt:message key="bookForm.input.pageCount.placeholder"/>" class="form-control form-input" type="text" value="${book.pageCount}">
 					</div>
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="publish_year"
-							placeholder="Год издания" class="form-control form-input" type="text" value="${book.publishYear}">
+							placeholder="<fmt:message key="bookForm.input.publishYear.placeholder"/>" class="form-control form-input" type="text" value="${book.publishYear}">
 					</div>
 				</div>
 			</div>
@@ -56,7 +56,7 @@
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="isbn"
-							placeholder="ISBN" class="form-control form-input" type="text" value="${book.isbn}">
+							placeholder="<fmt:message key="bookForm.input.isbn.placeholder"/>" class="form-control form-input" type="text" value="${book.isbn}">
 					</div>
 				</div>
 			</div>
@@ -68,7 +68,7 @@
 					<div class="input-group">
 						<span class="input-icon"></span> <select name="genre"
 							class="form-select">
-							<option value=" ">Please select genre</option>
+							<option value=" "><fmt:message key="bookForm.select.genre"/></option>
 							<c:forEach var="genre" items="${genres}" varStatus="status">
 								<option value="${genre.id}" <c:if test="${genre.name == book.genre.name}">selected</c:if>>${genre.name}</option>
 								
@@ -85,7 +85,7 @@
 					<div class="input-group">
 						<span class="input-icon"></span> <select name="language"
 							class="form-select">
-							<option value=" ">Please select language</option>
+							<option value=" "><fmt:message key="bookForm.select.language"/></option>
 							<c:forEach var="language" items="${languages}" varStatus="status">
 								<option <c:if test="${language == book.language}">selected</c:if>>${language}</option>
 								
@@ -102,7 +102,7 @@
 					<div class="input-group">
 						<span class="input-icon"></span> <select name="publisher"
 							class="form-select">
-							<option value=" ">Please select publisher</option>
+							<option value=" "><fmt:message key="bookForm.select.publisher"/></option>
 							<c:forEach var="publisher" items="${publishers}" varStatus="status">
 								<option value="${publisher.id}" <c:if test="${publisher.name == book.publisher.name}">selected</c:if>>${publisher.name}</option>
 								
@@ -136,7 +136,7 @@
 
 			<!-- File input-->
 			<div class="form-group">
-				<div class="label">Изображение</div>
+				<div class="label"><fmt:message key="bookForm.label.image"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="image"
@@ -147,7 +147,7 @@
 
 			<!-- File input-->
 			<div class="form-group">
-				<div class="label">Файл</div>
+				<div class="label"><fmt:message key="bookForm.label.file"/></div>
 				<div class="inputGroupContainer">
 					<div class="input-group">
 						<span class="input-icon"></span> <input name="file"
@@ -164,23 +164,17 @@
 					<div class="input-group">
 						<span class="input-icon"></span>
 						<textarea class="form-control" name="description"
-							placeholder="Description" >${book.description}</textarea>
+							placeholder="<fmt:message key="bookForm.textarea.description"/>" >${book.description}</textarea>
 					</div>
 				</div>
-			</div>
-
-			<!-- Success message -->
-			<div class="alert alert-success" role="alert" id="success_message">
-				Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for
-				contacting us, we will get back to you shortly.
-			</div>
+			</div>			
 
 			<!-- Button -->
 			<div class="form-group">
 				<label class="col-md-4 control-label"></label>
 				<div class="col-md-4">
 					<button type="submit" class="btn btn-warning">
-						Send <span class="glyphicon glyphicon-send"></span>
+						<fmt:message key="bookForm.label.button"/> <span class="glyphicon glyphicon-send"></span>
 					</button>
 				</div>
 			</div>

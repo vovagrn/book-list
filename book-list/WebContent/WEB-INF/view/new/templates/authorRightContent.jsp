@@ -5,6 +5,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<fmt:setBundle basename="/message/message" />
+
 <div class="right-content">
 
 	<jsp:include page="buttonsPanel.jsp" />
@@ -16,24 +18,24 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-					<div class="label">Повне ім'я</div>
+					<div class="label"><fmt:message key="authorForm.label.fullName"/></div>
 					<div class="inputGroupContainer">
 						<div class="input-group">
 							<span class="input-icon"></span> <input name="fullName"
-								placeholder="Название" class="form-control form-input"
-								type="text"">
+								placeholder="<fmt:message key="authorForm.input.fullName.placeholder"/>" class="form-control form-input"
+								type="text">
 						</div>
 					</div>
 				</div>
 
 				<!-- Text input-->
 				<div class="form-group">
-					<div class="label">Год издания</div>
+					<div class="label"><fmt:message key="authorForm.label.yearOfBirth"/></div>
 					<div class="inputGroupContainer">
 						<div class="input-group">
 							<span class="input-icon"></span> <input name="publish_year"
-								placeholder="Год издания" class="form-control form-input"
-								type="text"">
+								placeholder="<fmt:message key="authorForm.input.yearOfBirth.placeholder"/>" class="form-control form-input"
+								type="text">
 						</div>
 					</div>
 				</div>
@@ -43,7 +45,7 @@
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">
 						<button type="submit" class="btn btn-warning">
-							Send <span class="glyphicon glyphicon-send"></span>
+							<fmt:message key="authorForm.label.button"/><span class="glyphicon glyphicon-send"></span>
 						</button>
 					</div>
 				</div>
