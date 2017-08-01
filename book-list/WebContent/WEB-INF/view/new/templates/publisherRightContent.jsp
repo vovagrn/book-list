@@ -5,6 +5,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<fmt:setBundle basename="/message/message" />
+
 <div class="right-content">
 
 	<jsp:include page="buttonsPanel.jsp" />
@@ -16,11 +18,11 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-					<div class="label">Назва видавництва</div>
+					<div class="label"><fmt:message key="publisherForm.label.name"/></div>
 					<div class="inputGroupContainer">
 						<div class="input-group">
 							<span class="input-icon"></span> <input name="name"
-								placeholder="Назва видавництва" class="form-control form-input"
+								placeholder="<fmt:message key="publisherForm.input.name.placeholder"/>" class="form-control form-input"
 								type="text">
 						</div>
 					</div>
@@ -31,7 +33,7 @@
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">
 						<button type="submit" class="btn btn-warning">
-							Send <span class="glyphicon glyphicon-send"></span>
+							<fmt:message key="publisherForm.label.button"/><span class="glyphicon glyphicon-send"></span>
 						</button>
 					</div>
 				</div>
@@ -41,7 +43,7 @@
 	</div>
 
 	<div class="box-sh">
-		<h1>Знайдено видавництв: ${fn:length(publishers)}</h1>
+		<h1><fmt:message key="author.label.counter"/>: ${fn:length(publishers)}</h1>
 	</div>	
 
 	<c:forEach var="publisher" items="${publishers}">
