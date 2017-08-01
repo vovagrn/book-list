@@ -43,7 +43,7 @@
 	</div>
 
 	<div class="box-sh">
-		<h1><fmt:message key="author.label.counter"/>: ${fn:length(publishers)}</h1>
+		<h1><fmt:message key="publisher.label.counter"/>: ${fn:length(publishers)}</h1>
 	</div>	
 
 	<c:forEach var="publisher" items="${publishers}">
@@ -57,8 +57,8 @@
 
 		<div class="content-list-item">
 			<h1>${publisher.name}</h1>			
-			<a class="mr delete-button" id="delete" href="delete?id=${publisher.id}"><p class="delete">Удалить</p></a>
-			<a class="mr" href="#editPublisher${publisher.id}"><p class="edit">Изменить</p></a>
+			<a class="mr delete-button" id="delete" href="delete?id=${publisher.id}"><p class="delete"><fmt:message key="publisher.button.label.delete"/></p></a>
+			<a class="mr" href="#editPublisher${publisher.id}"><p class="edit"><fmt:message key="publisher.button.label.edit"/></p></a>
 		</div>
 
 	</c:forEach>

@@ -69,8 +69,8 @@
 
 		<div class="content-list-item">
 			<h1>${author.fullName}(${author.birthday})</h1>			
-			<a class="mr delete-button" id="delete" href="delete?id=${author.id}"><p class="delete">Удалить</p></a>
-			<a class="mr" href="#editAuthor${author.id}"><p class="edit">Изменить</p></a>
+			<a class="mr delete-button" id="delete" href="delete?id=${author.id}"><p class="delete"><fmt:message key="author.button.label.delete"/></p></a>
+			<a class="mr" href="#editAuthor${author.id}"><p class="edit"><fmt:message key="author.button.label.edit"/></p></a>
 		</div>
 
 	</c:forEach>

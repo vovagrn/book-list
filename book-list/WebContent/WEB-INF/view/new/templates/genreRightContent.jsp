@@ -57,8 +57,8 @@
 
 		<div class="content-list-item">
 			<h1>${genre.name}</h1>			
-			<a class="mr delete-button" id="delete" href="delete?id=${genre.id}"><p class="delete">Удалить</p></a>
-			<a class="mr" href="#editGenre${genre.id}"><p class="edit">Изменить</p></a>
+			<a class="mr delete-button" id="delete" href="delete?id=${genre.id}"><p class="delete"><fmt:message key="genre.button.label.delete"/></p></a>
+			<a class="mr" href="#editGenre${genre.id}"><p class="edit"><fmt:message key="genre.button.label.edit"/></p></a>
 		</div>
 
 	</c:forEach>
