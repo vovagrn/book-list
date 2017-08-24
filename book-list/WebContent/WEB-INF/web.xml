@@ -4,4 +4,11 @@
   <welcome-file-list>
     <welcome-file>main</welcome-file>
   </welcome-file-list>
+  
+  <!-- DEFAULT LENGUAGE -->
+  <context-param>
+  		<param-name>defaultLocale</param-name>
+  		<param-value>uk_UA</param-value>
+  </context-param>
+  
 </web-app>

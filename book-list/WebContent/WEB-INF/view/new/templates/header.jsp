@@ -7,8 +7,8 @@
 <div class="header">
     <div class="header-wrap">
         <div class="language">
-            <a href="#"><img src="<c:url value="/resources/images/rus.png"/>" width="16" height="13" alt="" /></a>
-            <a href="#"><img src="<c:url value="/resources/images/usa.png"/>" width="16" height="13" alt="" /></a>
+            <a href="<c:url value="/language?language=uk"/>"><img src="<c:url value="/resources/images/rus.png"/>" width="16" height="13" alt="" /></a>
+            <a href="<c:url value="/language?language=en"/>"><img src="<c:url value="/resources/images/usa.png"/>" width="16" height="13" alt="" /></a>
         </div>
 
         <div class="social">

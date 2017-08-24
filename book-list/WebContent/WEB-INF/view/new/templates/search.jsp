@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<fmt:setBundle basename="/message/message"/>
+<%-- <fmt:setBundle basename="/message/message"/> --%>
 
 <div class="logo">
         <a href="#"><img src="<c:url value="/resources/images/logo.png"/>" width="211" height="46" alt="" /></a>

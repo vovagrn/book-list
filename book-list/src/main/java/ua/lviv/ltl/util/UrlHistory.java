@@ -6,6 +6,10 @@ import java.util.List;
 public class UrlHistory {	
 	
 	private List<String> history = new ArrayList<String>();
+	{
+		history.add("/");
+		history.add("/");
+	}
 	
 	public UrlHistory() {		
 	}
