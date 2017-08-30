@@ -5,14 +5,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<fmt:setBundle basename="/message/message"/>
+<%-- <fmt:setBundle basename="/message/message"/> --%>
 
 <div class="right-content">
 
 	<jsp:include page="buttonsPanel.jsp" />
 	
 	<div class="box-sh">
-		<h1>Знайдено книг: ${fn:length(books)}</h1>		
+		<h1><fmt:message key="book.label.counter"/> ${fn:length(books)}</h1>		
 	</div>
 
 	<c:forEach var="book" items="${books}">

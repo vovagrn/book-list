@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<fmt:setBundle basename="/message/message"/>
+<%-- <fmt:setBundle basename="/message/message"/> --%>
 
 <div class="box-buttons">		
 		<a href="#add"><fmt:message key="buttonsPanels.addBook"/></a>

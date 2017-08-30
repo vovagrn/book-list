@@ -5,7 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<fmt:setBundle basename="/message/message" />
+<%-- <fmt:setBundle basename="/message/message" /> --%>
 
 <div class="right-content">
 
@@ -55,7 +55,7 @@
 	</div>
 
 	<div class="box-sh">
-		<h1>Знайдено авторів: ${fn:length(authors)}</h1>
+		<h1><fmt:message key="author.label.counter"/> ${fn:length(authors)}</h1>
 	</div>
 
 	<c:forEach var="author" items="${authors}">

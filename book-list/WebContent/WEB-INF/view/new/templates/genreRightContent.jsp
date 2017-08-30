@@ -5,7 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<fmt:setBundle basename="/message/message" />
+<%-- <fmt:setBundle basename="/message/message" /> --%>
 
 <div class="right-content">
 
@@ -43,7 +43,7 @@
 	</div>
 
 	<div class="box-sh">
-		<h1>Знайдено жанрів: ${fn:length(genres)}</h1>
+		<h1><fmt:message key="genre.label.counter"/> ${fn:length(genres)}</h1>
 	</div>	
 
 	<c:forEach var="genre" items="${genres}">

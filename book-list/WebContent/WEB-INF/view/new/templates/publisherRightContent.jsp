@@ -5,7 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<fmt:setBundle basename="/message/message" />
+<%-- <fmt:setBundle basename="/message/message" /> --%>
 
 <div class="right-content">
 
@@ -43,7 +43,7 @@
 	</div>
 
 	<div class="box-sh">
-		<h1><fmt:message key="publisher.label.counter"/>: ${fn:length(publishers)}</h1>
+		<h1><fmt:message key="publisher.label.counter"/> ${fn:length(publishers)}</h1>
 	</div>	
 
 	<c:forEach var="publisher" items="${publishers}">
