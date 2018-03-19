@@ -6,10 +6,11 @@ import org.hibernate.Session;
 
 import ua.lviv.ltl.dao.DaoException;
 import ua.lviv.ltl.dao.GenreDao;
+import ua.lviv.ltl.dao.GenreSearchCriteria;
 import ua.lviv.ltl.model.Genre;
 import ua.lviv.ltl.util.HibernateUtil;
 
-public class GenreDaoImpl extends AbstractGenericDao<Genre> implements GenreDao {
+public class GenreDaoImpl extends AbstractGenericDao<Genre, GenreSearchCriteria> implements GenreDao {
 
 	@Override
 	public Genre getById(Long id) throws DaoException {		
@@ -38,5 +39,15 @@ public class GenreDaoImpl extends AbstractGenericDao<Genre> implements GenreDao 
 				session.close();
 		}
 		return genre;		
+	}
+
+	@Override
+	public List<Genre> search(GenreSearchCriteria searchCriteria) throws DaoException {
+		throw new UnsupportedOperationException("Unsupported operation");	
+	}
+
+	@Override
+	public long count(GenreSearchCriteria searchCriteria) throws DaoException {
+		throw new UnsupportedOperationException("Unsupported operation");	
 	}
 }

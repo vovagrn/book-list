@@ -8,11 +8,12 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import ua.lviv.ltl.dao.BookDao;
+import ua.lviv.ltl.dao.BookSearchCriteria;
 import ua.lviv.ltl.dao.DaoException;
 import ua.lviv.ltl.model.Book;
 import ua.lviv.ltl.util.HibernateUtil;
 
-public class BookDaoImpl extends AbstractGenericDao<Book> implements BookDao {
+public class BookDaoImpl extends AbstractGenericDao<Book, BookSearchCriteria> implements BookDao {
 
 	@Override
 	public Book getById(Long id) throws DaoException {
@@ -66,6 +67,18 @@ public class BookDaoImpl extends AbstractGenericDao<Book> implements BookDao {
 				session.close();
 		}
 		return books;
+	}
+
+	@Override
+	public List<Book> search(BookSearchCriteria searchCriteria) throws DaoException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long count(BookSearchCriteria searchCriteria) throws DaoException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

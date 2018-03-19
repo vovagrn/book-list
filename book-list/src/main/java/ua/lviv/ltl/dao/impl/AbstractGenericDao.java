@@ -6,10 +6,11 @@ import org.hibernate.Session;
 
 import ua.lviv.ltl.dao.DaoException;
 import ua.lviv.ltl.dao.GenericDao;
+import ua.lviv.ltl.dao.SearchCriteria;
 import ua.lviv.ltl.model.BaseModel;
 import ua.lviv.ltl.util.HibernateUtil;
 
-public abstract class AbstractGenericDao<E extends BaseModel> implements GenericDao<E> {
+public abstract class AbstractGenericDao<E extends BaseModel, C extends SearchCriteria> implements GenericDao<E, C> {
 
 	@SuppressWarnings("unchecked")
 	protected E getByIdGeneric(Class<E> clazz, Long id) throws DaoException {

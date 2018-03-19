@@ -4,7 +4,7 @@ import java.util.List;
 
 import ua.lviv.ltl.model.Book;
 
-public interface BookDao extends GenericDao<Book>{
+public interface BookDao extends GenericDao<Book, BookSearchCriteria>{
 	
 	public List<Book> getBookByTitle(String title);
 	

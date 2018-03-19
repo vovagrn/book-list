@@ -4,9 +4,10 @@ import java.util.List;
 
 import ua.lviv.ltl.dao.DaoException;
 import ua.lviv.ltl.dao.PublisherDao;
+import ua.lviv.ltl.dao.PublisherSearchCriteria;
 import ua.lviv.ltl.model.Publisher;
 
-public class PublisherDaoImpl extends AbstractGenericDao<Publisher> implements PublisherDao {
+public class PublisherDaoImpl extends AbstractGenericDao<Publisher, PublisherSearchCriteria> implements PublisherDao {
 
 	@Override
 	public Publisher getById(Long id) throws DaoException {		
@@ -16,6 +17,16 @@ public class PublisherDaoImpl extends AbstractGenericDao<Publisher> implements P
 	@Override
 	public List<Publisher> getAll() throws DaoException {		
 		return super.getAllGeneric(Publisher.class);
+	}
+
+	@Override
+	public List<Publisher> search(PublisherSearchCriteria searchCriteria) throws DaoException {
+		throw new UnsupportedOperationException("Unsupported operation");	
+	}
+
+	@Override
+	public long count(PublisherSearchCriteria searchCriteria) throws DaoException {
+		throw new UnsupportedOperationException("Unsupported operation");	
 	}
 
 	
