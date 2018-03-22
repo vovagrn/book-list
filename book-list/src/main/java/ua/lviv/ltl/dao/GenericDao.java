@@ -3,7 +3,7 @@ package ua.lviv.ltl.dao;
 import java.util.List;
 import ua.lviv.ltl.model.BaseModel;
 
-public interface GenericDao<E extends BaseModel, C extends SearchCriteria> {
+public interface GenericDao<E extends BaseModel, C extends SearchCriteria<?>> {
 
 	public E getById(Long id) throws DaoException;
 
