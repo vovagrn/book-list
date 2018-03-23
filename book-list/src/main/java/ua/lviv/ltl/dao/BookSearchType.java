@@ -1,7 +1,8 @@
 package ua.lviv.ltl.dao;
 
 public enum BookSearchType implements SearchType {
-	BY_TITLE("title");
+	BY_TITLE("title"),
+	PUBLISH_YEAR("publishYear");
 
 	private String value;
 

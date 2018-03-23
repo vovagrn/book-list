@@ -211,6 +211,12 @@ public class Book extends BaseModel implements Serializable{
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Book [title=" + title + ", description=" + description + ", pageCount=" + pageCount + ", language="
+				+ language + ", publishYear=" + publishYear + ", isbn=" + isbn + "]";
+	}
+
 	
 
 }

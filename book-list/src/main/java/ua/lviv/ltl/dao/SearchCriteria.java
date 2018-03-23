@@ -6,23 +6,25 @@ import ua.lviv.ltl.dao.impl.SearchEntry;
 
 public class SearchCriteria<E extends SearchType> {
 
-	public enum SortType {
+	public enum SortOrder {
 		ASC, DESC
 	}
 
 	private boolean pagination = false;
-	private int start = 0;
+	private int firstResult = 0;
 	private int pageSize = 0;
+	private E sortBy;
+	private SortOrder sortOrder;
 	private List<SearchEntry<E>> searcEntrys = new ArrayList<>();
 
 	public SearchCriteria() {
 		super();
 	}
 
-	public SearchCriteria(int start, int pageSize) {
+	public SearchCriteria(int firstResult, int pageSize) {
 		super();
 		this.pagination = true;
-		this.start = start;
+		this.firstResult = firstResult;
 		this.pageSize = pageSize;
 	}
 
@@ -50,12 +52,34 @@ public class SearchCriteria<E extends SearchType> {
 		this.pageSize = pageSize;
 	}
 
-	public int getStart() {
-		return start;
+	public int getFirstResult() {
+		return firstResult;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setFirstResult(int firstResult) {
+		this.firstResult = firstResult;
 	}
+
+	public E getSortBy() {
+		return sortBy;
+	}
+
+	public void setSortBy(E searchBy) {
+		this.sortBy = searchBy;
+	}
+
+	public SortOrder getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(SortOrder sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+
+	public List<SearchEntry<E>> getSearcEntrys() {
+		return searcEntrys;
+	}
+	
+	
 
 }

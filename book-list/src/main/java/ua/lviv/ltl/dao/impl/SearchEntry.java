@@ -1,5 +1,6 @@
 package ua.lviv.ltl.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ua.lviv.ltl.dao.SearchType;
@@ -10,7 +11,7 @@ public class SearchEntry<E extends SearchType> {
 	private boolean searchByDiapason = false;
 	private Object startDiapason;
 	private Object endDiapason;
-	private List<Object> values;
+	private List<Object> values = new ArrayList<>();
 
 	public SearchEntry() {
 		super();
@@ -45,6 +46,12 @@ public class SearchEntry<E extends SearchType> {
 
 	public E getSearchType() {
 		return searchType;
+	}
+	
+	
+
+	public void setSearchType(E searchType) {
+		this.searchType = searchType;
 	}
 
 	public List<Object> getValues() {
