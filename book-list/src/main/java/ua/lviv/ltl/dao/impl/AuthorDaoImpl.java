@@ -8,22 +8,16 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import ua.lviv.ltl.dao.AuthorDao;
-import ua.lviv.ltl.dao.AuthorSearchCriteria;
+import ua.lviv.ltl.dao.AuthorSearchType;
 import ua.lviv.ltl.dao.DaoException;
 import ua.lviv.ltl.model.Author;
 import ua.lviv.ltl.util.HibernateUtil;
 
-public class AuthorDaoImpl extends AbstractGenericDao<Author, AuthorSearchCriteria> implements AuthorDao {
+public class AuthorDaoImpl extends AbstractGenericDao<Author, AuthorSearchType> implements AuthorDao {
 
-	@Override
-	public Author getById(Long id) throws DaoException {
-		return super.getByIdGeneric(Author.class, id);
-	}
-
-	@Override
-	public List<Author> getAll() throws DaoException {
-		return super.getAllGeneric(Author.class);
-	}
+	public AuthorDaoImpl() {
+		super(Author.class);		
+	}	
 
 	@SuppressWarnings("unchecked")
 	public List<Author> getAuthorByName(String name) {
@@ -63,15 +57,6 @@ public class AuthorDaoImpl extends AbstractGenericDao<Author, AuthorSearchCriter
 				session.close();
 		}
 		return author;
-	}
-
-	@Override
-	public List<Author> search(AuthorSearchCriteria searchCriteria) throws DaoException {
-		throw new UnsupportedOperationException("Unsupported operation");		
-	}
-
-	@Override
-	public long count(AuthorSearchCriteria searchCriteria) throws DaoException {
-		throw new UnsupportedOperationException("Unsupported operation");	
-	}
+	}	
+	
 }

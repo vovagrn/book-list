@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import ua.lviv.ltl.dao.impl.SearchEntry;
 
-public class SearchCriteria<E extends SearchType> {
+public class SearchFilter<T extends SearchType> {
 
 	public enum SortOrder {
 		ASC, DESC
@@ -13,26 +13,26 @@ public class SearchCriteria<E extends SearchType> {
 	private boolean pagination = false;
 	private int firstResult = 0;
 	private int pageSize = 0;
-	private E sortBy;
+	private T sortBy;
 	private SortOrder sortOrder;
-	private List<SearchEntry<E>> searcEntrys = new ArrayList<>();
+	private List<SearchEntry<T>> searcEntrys = new ArrayList<>();
 
-	public SearchCriteria() {
+	public SearchFilter() {
 		super();
 	}
 
-	public SearchCriteria(int firstResult, int pageSize) {
+	public SearchFilter(int firstResult, int pageSize) {
 		super();
 		this.pagination = true;
 		this.firstResult = firstResult;
 		this.pageSize = pageSize;
 	}
 
-	public void addAllSearchEntrys(List<SearchEntry<E>> searchEntrys) {
+	public void addAllSearchEntrys(List<SearchEntry<T>> searchEntrys) {
 		this.searcEntrys.addAll(searchEntrys);
 	}
 
-	public void addSearchEntry(SearchEntry<E> searchEntry) {
+	public void addSearchEntry(SearchEntry<T> searchEntry) {
 		searcEntrys.add(searchEntry);
 	}
 
@@ -60,11 +60,11 @@ public class SearchCriteria<E extends SearchType> {
 		this.firstResult = firstResult;
 	}
 
-	public E getSortBy() {
+	public T getSortBy() {
 		return sortBy;
 	}
 
-	public void setSortBy(E searchBy) {
+	public void setSortBy(T searchBy) {
 		this.sortBy = searchBy;
 	}
 
@@ -76,7 +76,7 @@ public class SearchCriteria<E extends SearchType> {
 		this.sortOrder = sortOrder;
 	}
 
-	public List<SearchEntry<E>> getSearcEntrys() {
+	public List<SearchEntry<T>> getSearcEntrys() {
 		return searcEntrys;
 	}
 	
